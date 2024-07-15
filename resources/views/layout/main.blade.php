@@ -244,6 +244,22 @@
             </a>
           </li>
           <li class="nav-item">
+            <a href="{{ route('admin.index_kelas')}}" class="nav-link">
+              <i class="nav-icon fas fa-th"></i>
+              <p>
+                Kelas
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="{{ route('admin.index_jam')}}" class="nav-link">
+              <i class="nav-icon fas fa-th"></i>
+              <p>
+                Jam
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
             <a href="{{ route('logout') }}" class="nav-link">
               <i class="nav-icon fas fa-th"></i>
               <p>

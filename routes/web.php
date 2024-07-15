@@ -3,9 +3,11 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\GuruController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\KelasController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\MapelController;
 use App\Http\Controllers\DataTableController;
+use App\Http\Controllers\JamController;
 
 /*
 |--------------------------------------------------------------------------
@@ -58,5 +60,21 @@ Route::group(['prefix' => 'admin','middleware' => ['auth'], 'as' => 'admin.'] , 
     Route::get('/edit-guru/{id}', [GuruController::class, 'edit'])->name('guru.edit');
     Route::put('/update-guru/{id}', [GuruController::class, 'update'])->name('guru.update');
     Route::delete('/delete-guru/{id}', [GuruController::class, 'delete'])->name('guru.delete');
+
+    //kelas
+    Route::get('/kelas', [KelasController::class, 'index_kelas'])->name('index_kelas');
+    Route::get('/create-kelas', [KelasController::class, 'create'])->name('kelas.create');
+    Route::post('/store-kelas', [KelasController::class, 'store'])->name('kelas.store');
+    Route::get('/edit-kelas/{id}', [KelasController::class, 'edit'])->name('kelas.edit');
+    Route::put('/update-kelas/{id}', [KelasController::class, 'update'])->name('kelas.update');
+    Route::delete('/delete-kelas/{id}', [KelasController::class, 'delete'])->name('kelas.delete');
+
+    //kelas
+    Route::get('/jam', [JamController::class, 'index_jam'])->name('index_jam');
+    Route::get('/create-jam', [JamController::class, 'create'])->name('jam.create');
+    Route::post('/store-jam', [JamController::class, 'store'])->name('jam.store');
+    Route::get('/edit-jam/{id}', [JamController::class, 'edit'])->name('jam.edit');
+    Route::put('/update-jam/{id}', [JamController::class, 'update'])->name('jam.update');
+    Route::delete('/delete-jam/{id}', [JamController::class, 'delete'])->name('jam.delete');
 });
 
