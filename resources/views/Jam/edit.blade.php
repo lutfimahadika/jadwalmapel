@@ -10,7 +10,8 @@
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="#">Home</a></li>
+                <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}">Home</a></li>
+                <li class="breadcrumb-item"><a href="{{ route('admin.index_jam') }}">Jam</a></li>
               <li class="breadcrumb-item active">Edit Jam Pelajaran</li>
             </ol>
           </div><!-- /.col -->

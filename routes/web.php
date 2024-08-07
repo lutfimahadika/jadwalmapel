@@ -1,13 +1,17 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\JamController;
 use App\Http\Controllers\GuruController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\KelasController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\MapelController;
+use App\Http\Controllers\JadwalController;
 use App\Http\Controllers\DataTableController;
-use App\Http\Controllers\JamController;
+use App\Http\Controllers\GenetikaController;
+use App\Http\Controllers\GurumapelController;
+use App\Models\Genetika;
 
 /*
 |--------------------------------------------------------------------------
@@ -61,6 +65,14 @@ Route::group(['prefix' => 'admin','middleware' => ['auth'], 'as' => 'admin.'] , 
     Route::put('/update-guru/{id}', [GuruController::class, 'update'])->name('guru.update');
     Route::delete('/delete-guru/{id}', [GuruController::class, 'delete'])->name('guru.delete');
 
+    //guru mengajar
+    Route::get('/gurumengajar', [GurumapelController::class, 'index_gurumengajar'])->name('index_gurumengajar');
+    Route::get('/create-gurumengajar', [GurumapelController::class, 'create'])->name('gurumengajar.create');
+    Route::post('/store-gurumengajar', [GurumapelController::class, 'store'])->name('gurumengajar.store');
+    Route::get('/edit-gurumengajar/{id}', [GurumapelController::class, 'edit'])->name('gurumengajar.edit');
+    Route::put('/update-gurumengajar/{id}', [GurumapelController::class, 'update'])->name('gurumengajar.update');
+    Route::delete('/delete-gurumengajar/{id}', [GurumapelController::class, 'delete'])->name('gurumengajar.delete');
+
     //kelas
     Route::get('/kelas', [KelasController::class, 'index_kelas'])->name('index_kelas');
     Route::get('/create-kelas', [KelasController::class, 'create'])->name('kelas.create');
@@ -76,5 +88,10 @@ Route::group(['prefix' => 'admin','middleware' => ['auth'], 'as' => 'admin.'] , 
     Route::get('/edit-jam/{id}', [JamController::class, 'edit'])->name('jam.edit');
     Route::put('/update-jam/{id}', [JamController::class, 'update'])->name('jam.update');
     Route::delete('/delete-jam/{id}', [JamController::class, 'delete'])->name('jam.delete');
+
+    // routes/web.php
+    Route::get('/genetika', [GenetikaController::class, 'index'])->name('genetika.index');
+    Route::get('/genetika/generate', [Genetika::class, 'generate'])->name('genetika.generate');
+
 });
 

@@ -13,11 +13,11 @@ return new class extends Migration
     {
         Schema::create('jadwals', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('hari_id')->constrained('haris');
-            $table->foreignId('jam_id')->constrained('jams');
-            $table->foreignId('mapel_id')->constrained('mapels');
-            $table->foreignId('guru_id')->constrained('gurus');
-            $table->foreignId('kelas_id')->constrained('kelas');
+            $table->foreignId('hari_id')->constrained('haris')->onDelete('cascade');
+            $table->foreignId('jam_id')->constrained('jams')->onDelete('cascade');
+            $table->foreignId('mapel_id')->constrained('mapels')->onDelete('cascade');
+            $table->foreignId('guru_id')->constrained('gurus')->onDelete('cascade');
+            $table->foreignId('kelas_id')->constrained('kelas')->onDelete('cascade');
             $table->time('waktu_mulai')->nullable();
             $table->time('waktu_selesai')->nullable();
             $table->timestamps();

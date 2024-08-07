@@ -10,4 +10,9 @@ class Jam extends Model
     use HasFactory;
 
     protected $fillable = ['jam_awal', 'jam_akhir'];
+
+    public function jadwals()
+    {
+        return $this->hasMany(Jadwal::class);
+    }
 }

@@ -6,13 +6,13 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0">Jam Pelajaran</h1>
+            <h1 class="m-0">Guru Mata Pelajaran</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-                <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}">Home</a></li>
-                <li class="breadcrumb-item"><a href="{{ route('admin.index_jam') }}">Jam</a></li>
-              <li class="breadcrumb-item active">Tambah Jam Pelajaran</li>
+              <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}">Home</a></li>
+              <li class="breadcrumb-item"><a href="{{ route('admin.index_gurumengajar') }}">Guru Mata Pelajaran</a></li>
+              <li class="breadcrumb-item active">Tambah Data Guru</li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
@@ -22,7 +22,7 @@
 <!-- Main content -->
 <section class="content">
     <div class="container-fluid">
-        <form action="{{ route('admin.jam.store') }}" method="POST" enctype="multipart/form-data">
+        <form action="{{ route('admin.gurumengajar.store') }}" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="row">
                 <!-- left column -->
@@ -30,26 +30,30 @@
                   <!-- general form elements -->
                   <div class="card card-primary">
                     <div class="card-header">
-                      <h3 class="card-title">Form Tambah jam</h3>
+                      <h3 class="card-title">Form Tambah Guru Mengajar</h3>
                     </div>
                     <!-- /.card-header -->
                     <!-- form start -->
                     <form>
                       <div class="card-body">
                         <div class="form-group">
-                          <label for="exampleInputEmail1">Mulai</label>
-                          <input type="text" class="form-control" id="exampleInputEmail1" name="jam_awal" placeholder="Masukkan Jam Awal">
-                            @error('jam_awal')
-                                <small>{{ $message }}</small>
-                            @enderror
+                          <label for="exampleInputEmail1">Guru Mata Pelajaran</label>
+                          <select name="guru" id="guru" class="form-control" required>
+                            <option value="">Pilih Guru Mata Pelajaran</option>
+                            @foreach ($dataGuru as $d)
+                                <option value="{{ $d->id }}">{{ $d->nama_guru }}</option>
+                            @endforeach
+                          </select>
                         </div>
                         <div class="form-group">
-                            <label for="exampleInputEmail1">Berakhir</label>
-                            <input type="text" class="form-control" id="exampleInputEmail1" name="jam_akhir" placeholder="Masukkan Jam Akhir">
-                            @error('jam_akhir')
-                                <small>{{ $message }}</small>
-                            @enderror
-                          </div>
+                            <label for="exampleInputEmail1">Mata Pelajaran</label>
+                            <select name="mapel" id="mapel" class="form-control" required>
+                                <option value="">Pilih Mata Pelajaran</option>
+                                @foreach ($dataMapel as $d)
+                                    <option value="{{ $d->id }}">{{ $d->mata_pelajaran }}</option>
+                                @endforeach
+                              </select>
+                        </div>
                       <!-- /.card-body -->
 
                       <div class="card-footer">

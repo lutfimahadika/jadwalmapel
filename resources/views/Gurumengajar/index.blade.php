@@ -24,13 +24,13 @@
       <div class="container-fluid">
         <div class="row">
             <div class="col-12">
-                <a href="{{ route('admin.guru.create') }}" class="btn btn-primary mb-3" >Tambah Data</a>
+                <a href="{{ route('admin.gurumengajar.create') }}" class="btn btn-primary mb-3" >Tambah Data</a>
               <div class="card">
                 <div class="card-header">
                   <h3 class="card-title">Tabel Guru Mata Pelajaran</h3>
 
                   <div class="card-tools">
-                    <form action="{{ route('admin.index_guru') }}" method="GET">
+                    <form action="{{ route('admin.index_gurumengajar') }}" method="GET">
                         <div class="input-group input-group-sm" style="width: 150px;">
                             <input type="text" name="search" class="form-control float-right" placeholder="Search" value="{{ $request->get('search') }}">
 
@@ -50,20 +50,20 @@
                       <tr>
                         <th>No</th>
                         <th>No DUK</th>
-                        <th>Nama Guru Mata Pelajaran</th>
-                        <th>Beban Mengajar</th>
+                        <th>Nama Guru</th>
+                        <th>Mata Pelajaran</th>
                         <th>Aksi</th>
                       </tr>
                     </thead>
                     <tbody>
                         @foreach ($data as $d)
                         <tr>
-                            <td>{{ $d->id }}</td>
-                            <td>{{ $d->no_duk }}</td>
-                            <td>{{ $d->nama_guru }}</td>
-                            <td>{{ $d->beban_mengajar }}</td>
+                            <td>{{ $loop->iteration }}</td>
+                            <td>{{ $d->guru->no_duk }}</td>
+                            <td>{{ $d->guru->nama_guru }}</td>
+                            <td>{{ $d->mapel->mata_pelajaran }}</td>
                             <td>
-                                <a href="{{ route('admin.guru.edit',['id' => $d->id]) }}" class="btn btn-primary"><i class="fas fa-pen"></i>Edit</a>
+                                <a href="{{ route('admin.gurumengajar.edit',['id' => $d->id]) }}" class="btn btn-primary"><i class="fas fa-pen"></i>Edit</a>
                                 <a href="" data-toggle="modal" data-target="#modal-hapus{{ $d->id }}" class="btn btn-danger"><i class="fas fa-pen"></i>Hapus</a>
                             </td>
                         </tr>
@@ -80,7 +80,7 @@
                                   <p>Apakah kamu yakin ingin menghapus data <b>{{ $d->nama_guru }}</b></p>
                                 </div>
                                 <div class="modal-footer justify-content-between">
-                                    <form action="{{ route('admin.guru.delete',['id' => $d->id]) }}" method="POST">
+                                    <form action="{{ route('admin.gurumengajar.delete',['id' => $d->id]) }}" method="POST">
                                         @csrf
                                         @method('DELETE')
                                         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>

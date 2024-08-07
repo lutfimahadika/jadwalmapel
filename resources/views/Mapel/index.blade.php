@@ -10,7 +10,7 @@
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="#">Home</a></li>
+              <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}">Home</a></li>
               <li class="breadcrumb-item active">Mata Pelajaran</li>
             </ol>
           </div><!-- /.col -->
@@ -51,6 +51,8 @@
                         <th>No</th>
                         <th>Mata Pelajaran</th>
                         <th>Jam Pelajaran</th>
+                        <th>Tingkat Kelas</th>
+                        <th>Jurusan</th>
                         <th>Aksi</th>
                       </tr>
                     </thead>
@@ -60,6 +62,8 @@
                             <td>{{ $loop->iteration }}</td>
                             <td>{{ $d->mata_pelajaran }}</td>
                             <td>{{ $d->jp }}</td>
+                            <td>{{ $d->tingkat }}</td>
+                            <td>{{ $d->jurusan }}</td>
                             <td>
                                 <a href="{{ route('admin.mapel.edit',['id' => $d->id]) }}" class="btn btn-primary"><i class="fas fa-pen"></i>Edit</a>
                                 <a href="" data-toggle="modal" data-target="#modal-hapus{{ $d->id }}" class="btn btn-danger"><i class="fas fa-pen"></i>Hapus</a>

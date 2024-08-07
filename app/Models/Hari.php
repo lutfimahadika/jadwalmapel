@@ -10,4 +10,8 @@ class Hari extends Model
     use HasFactory;
 
     protected $fillable = ['nama_hari'];
+    public function jadwals()
+    {
+        return $this->hasMany(Jadwal::class);
+    }
 }

@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Guru;
+use App\Models\Kelas;
+use App\Models\Mapel;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -19,7 +22,13 @@ class HomeController extends Controller
     //dashboard
     public function dashboard(){
 
-        return view('dashboard');
+        $data = [
+            'guru' => Guru::count(),
+            'kelas' => Kelas::count(),
+            'mapel' => Mapel::count()
+        ];
+
+        return view('dashboard', $data);
 
         return abort(403);
     }

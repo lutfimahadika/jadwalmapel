@@ -37,6 +37,8 @@ class MapelController extends Controller
 
         $data['mata_pelajaran'] = $request->mapel;
         $data['jp'] = $request->jp;
+        $data['tingkat'] = $request->tingkat;
+        $data['jurusan'] = $request->jurusan;
 
         Mapel::create($data);
 
@@ -62,6 +64,8 @@ class MapelController extends Controller
 
         $data['mata_pelajaran'] = $request->mapel;
         $data['jp'] = $request->jp;
+        $data['tingkat'] = $request->tingkat;
+        $data['jurusan'] = $request->jurusan;
 
         $find->update($data);
 
@@ -75,7 +79,7 @@ class MapelController extends Controller
             $data->delete();
         }
 
-        return redirect()->route('admin.index');
+        return redirect()->route('admin.index_mapel');
     }
     //user controller end
 }

@@ -1,5 +1,5 @@
 <?php
-
+//models GuruMapel
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -15,4 +15,15 @@ class GuruMapel extends Model
         'guru_id',
         'mapel_id'
     ];
+
+    public function guru()
+    {
+        return $this->belongsTo(Guru::class, 'guru_id'); // Asumsi 'guru_id' adalah nama foreign key di tabel pivot
+    }
+
+    // Definisikan relasi dengan model Mapel
+    public function mapel()
+    {
+        return $this->belongsTo(Mapel::class, 'mapel_id'); // Asumsi 'mapel_id' adalah nama foreign key di tabel pivot
+    }
 }

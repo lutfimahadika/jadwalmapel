@@ -1,11 +1,12 @@
 <?php
-    namespace App\Http\Controllers;
+namespace App\Http\Controllers;
 
-    use App\Models\Guru;
-use App\Models\GuruMapel;
-use App\Models\Mapel;
+use App\Models\Guru;
 use Illuminate\Http\Request;
-        use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Validator;
+
 
         class GuruController extends Controller
         {
@@ -22,8 +23,7 @@ use Illuminate\Http\Request;
             }
 
             public function create(){
-                $dataMapel = Mapel::select('id', 'mata_pelajaran')->get();
-                return view('guru.create', ['dataMapel' => $dataMapel]);
+                return view('guru.create');
 
             }
 
@@ -33,22 +33,16 @@ use Illuminate\Http\Request;
                     'no_duk' => 'required|numeric',
                     'guru' => 'required',
                     'beban_mengajar' => 'required|numeric',
-                    'mapel' => 'required', // Pastikan memvalidasi input mapel
                 ]);
 
-                if ($validator->fails()) {
-                    return redirect()->back()->withInput()->withErrors($validator);
-                }
+                if($validator->fails()) return redirect()->back()->withInput()->withErrors($validator);
 
                 // Simpan data guru baru
-                $guru = Guru::create([
-                    'no_duk' => $request->no_duk,
-                    'nama_guru' => $request->guru,
-                    'beban_mengajar' => $request->beban_mengajar,
-                ]);
+                $data['no_duk'] = $request->no_duk;
+                $data['nama_guru'] = $request->guru;
+                $data['beban_mengajar'] = $request->beban_mengajar;
 
-                // Simpan relasi many-to-many antara guru dan mapel
-                $guru->mapels()->attach($request->mapel);
+                Guru::create($data);
 
                 return redirect()->route('admin.index_guru');
             }
@@ -56,9 +50,8 @@ use Illuminate\Http\Request;
 
             public function edit(Request $request, $id){
                 $data = Guru::find($id);
-                $dataMapel = Mapel::select('id', 'mata_pelajaran')->get();
 
-                return view('guru.edit',compact('data', 'dataMapel'), ['dataMapel' => $dataMapel]);
+                return view('guru.edit',compact('data'));
             }
 
             public function update(Request $request, $id)
@@ -67,25 +60,17 @@ use Illuminate\Http\Request;
                     'no_duk' => 'required|numeric',
                     'guru' => 'required',
                     'beban_mengajar' => 'required|numeric',
-                    'mapel' => 'required', // Pastikan memvalidasi input mapel
                 ]);
 
-                if ($validator->fails()) {
-                    return redirect()->back()->withInput()->withErrors($validator);
-                }
+                if($validator->fails()) return redirect()->back()->withInput()->withErrors($validator);
 
-                $guru = Guru::find($id);
+                $find = Guru::find($id);
 
-                // Update data guru
-                $data = [
-                    'no_duk' => $request->no_duk,
-                    'nama_guru' => $request->guru,
-                    'beban_mengajar' => $request->beban_mengajar,
-                ];
-                $guru->update($data);
+                $data['no_duk'] = $request->no_duk;
+                $data['nama_guru'] = $request->guru;
+                $data['beban_mengajar'] = $request->beban_mengajar;
 
-                // Sinkronisasi mata pelajaran yang diajar oleh guru
-                $guru->mapels()->sync($request->mapel);
+                $find->update($data);
 
                 return redirect()->route('admin.index_guru');
             }
@@ -95,10 +80,8 @@ use Illuminate\Http\Request;
                 $data = Guru::find($id);
 
                 if($data){
-                    $data->mapels()->detach();
                     $data->delete();
                 }
-
                 return redirect()->route('admin.index_guru');
             }
             //user controller end

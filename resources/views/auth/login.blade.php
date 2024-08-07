@@ -19,7 +19,10 @@
   <!-- /.login-logo -->
   <div class="card card-outline card-primary">
     <div class="card-header text-center">
-      <a href="{{ route('login') }}" class="h1"><b>Admin</b>LTE</a>
+      <a href="{{ route('login') }}"></a>
+      <div class="logo mt-4 mb-4">
+        <img src="{{ asset('img/logo.png') }}" alt="" class="brand-image img-circle elevation-3">
+       </div>
     </div>
     <div class="card-body">
       <p class="login-box-msg">Sign in to start your session</p>
@@ -50,12 +53,6 @@
           @enderror
         <div class="row">
           <div class="col-8">
-            <div class="icheck-primary">
-              <input type="checkbox" id="remember">
-              <label for="remember">
-                Remember Me
-              </label>
-            </div>
           </div>
           <!-- /.col -->
           <div class="col-4">
@@ -64,13 +61,6 @@
           <!-- /.col -->
         </div>
       </form>
-
-      <p class="mb-1">
-        <a href="forgot-password.html">I forgot my password</a>
-      </p>
-      <p class="mb-0">
-        <a href="{{ route('register') }}" class="text-center">Register a new membership</a>
-      </p>
     </div>
     <!-- /.card-body -->
   </div>

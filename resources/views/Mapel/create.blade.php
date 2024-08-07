@@ -10,7 +10,8 @@
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="#">Home</a></li>
+              <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}">Home</a></li>
+              <li class="breadcrumb-item"><a href="{{ route('admin.index_mapel') }}">Mata Pelajaran</a></li>
               <li class="breadcrumb-item active">Tambah Mata Pelajaran</li>
             </ol>
           </div><!-- /.col -->
@@ -48,6 +49,14 @@
                             @error('jp')
                                 <small>{{ $message }}</small>
                             @enderror
+                          </div>
+                          <div class="form-group">
+                            <label for="exampleInputEmail1">Tingkatan Kelas</label>
+                            <input type="number" class="form-control" id="exampleInputEmail1" name="tingkat" placeholder="Masukkan Jam Pelajaran">
+                          </div>
+                          <div class="form-group">
+                            <label for="exampleInputEmail1">Jurusan</label>
+                            <input type="text" class="form-control" id="exampleInputEmail1" name="jurusan" placeholder="Masukkan Jam Pelajaran">
                           </div>
                       <!-- /.card-body -->
 

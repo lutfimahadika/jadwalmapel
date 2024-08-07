@@ -1,5 +1,5 @@
 <?php
-
+//models guru
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -19,6 +19,14 @@ class Guru extends Model
 
     //relasi many to many dengan mata pelajaran
     public function mapels(){
-        return $this->belongsToMany(Mapel::class, 'guru_mata_pelajaran', 'guru_id', 'mapel_id');
+        // return $this->belongsToMany(Mapel::class, 'guru_mata_pelajaran', 'guru_id', 'mapel_id');
+        return $this->hasMany(GuruMapel::class, 'guru_id');
     }
+
+    public function jadwals()
+    {
+        return $this->hasMany(Jadwal::class);
+    }
+
+
 }

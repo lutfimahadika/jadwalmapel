@@ -12,4 +12,9 @@ class Kelas extends Model
     protected $fillable = [
         'nama_kelas', 'tingkat', 'jurusan'
     ];
+
+    public function jadwals()
+    {
+        return $this->hasMany(Jadwal::class);
+    }
 }

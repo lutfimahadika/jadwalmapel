@@ -10,8 +10,9 @@
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Edit Guru Mata Pelajaran</li>
+                <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}">Home</a></li>
+                <li class="breadcrumb-item"><a href="{{ route('admin.index_guru') }}">Guru Mata Pelajaran</a></li>
+                <li class="breadcrumb-item active">Edit Guru Mata Pelajaran</li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
@@ -57,15 +58,6 @@
                                 <small>{{ $message }}</small>
                             @enderror
                           </div>
-                          <div class="form-group">
-                            <label for="exampleInputEmail1">Mata Pelajaran</label>
-                            <select name="mapel" id="mapel" class="form-control" required>
-                                <option value="">Pilih Mata Pelajaran</option>
-                                @foreach ($dataMapel as $d)
-                                    <option value="{{ $d->id }}">{{ $d->mata_pelajaran }}</option>
-                                @endforeach
-                            </select>
-                        </div>
                       <!-- /.card-body -->
 
                       <div class="card-footer">
