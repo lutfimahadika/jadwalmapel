@@ -49,9 +49,7 @@
                               is_null($schedule->jam_id) &&
                               is_null($schedule->guru) &&
                               is_null($schedule->kelas) &&
-                              is_null($schedule->hari) &&
-                              is_null($schedule->jam->jam_awal) &&
-                              is_null($schedule->jam->jam_akhir )
+                              is_null($schedule->hari)
                           )
                               @continue
                           @endif
