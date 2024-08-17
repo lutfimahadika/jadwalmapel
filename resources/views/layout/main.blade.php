@@ -95,14 +95,14 @@
               </p>
             </a>
           </li>
-          <li class="nav-item">
+          {{-- <li class="nav-item">
             <a href="{{ route('admin.index')}}" class="nav-link">
               <i class="nav-icon fas fa-user"></i>
               <p>
                 Users
               </p>
             </a>
-          </li>
+          </li> --}}
           <li class="nav-item">
             <a href="{{ route('admin.index_mapel')}}" class="nav-link">
               <i class="nav-icon fas fa-book"></i>

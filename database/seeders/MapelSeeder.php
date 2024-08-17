@@ -88,7 +88,7 @@ class MapelSeeder extends Seeder
         DB::table('mapels')->insert([
             "mata_pelajaran" => "Bahasa Indonesia (Umum) P5",
             "jp" => 1,
-            "tingkat" => "1",
+            "tingkat" => "2",
             "jurusan" => null,
             'created_at' => now(),
             'updated_at' => now(),

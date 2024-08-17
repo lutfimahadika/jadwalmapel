@@ -39,7 +39,7 @@
                         <div class="form-group">
                           <label for="exampleInputEmail1">Kelas</label>
                           <input type="text" class="form-control" id="exampleInputEmail1" name="nama_kelas" placeholder="Masukkan Kelas">
-                            @error('kelas')
+                            @error('nama_kelas')
                                 <small>{{ $message }}</small>
                             @enderror
                         </div>

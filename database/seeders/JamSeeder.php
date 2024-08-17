@@ -14,7 +14,7 @@ class JamSeeder extends Seeder
     public function run(): void
     {
         DB::table('jams')->insert([
-            'jam_awal' => '06:45',
+            'jam_awal' => '07.00',
             'jam_akhir' => '07:45',
             'created_at' => now(),
             'updated_at' => now(),

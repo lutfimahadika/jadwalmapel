@@ -1,425 +1,466 @@
 <?php
 
-    namespace App\Models;
+namespace App\Models;
 
-    use Illuminate\Database\Eloquent\Model;
-    use Illuminate\Support\Facades\DB;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\DB;
 
-    class Genetika extends Model
+class Genetika extends Model
+{
+    public $pengampu = [];
+    public $jp = [];
+    public $dosen = [];
+    public $jenis_mk = [];
+    public $mapel = [];
+    public $individu = [];
+    public $induk = [];
+    public $waktu_dosen = [];
+    public $idosen = [];
+    public $jam = [];
+    public $hari = [];
+    public $ruangReguler = [];
+    public $tingkat_kelas = [];
+    public $tingkat_mapel = [];
+
+    protected $jenis_semester;
+    protected $tahun_akademik;
+    protected $populasi;
+    protected $crossOver;
+    protected $mutasi;
+    protected $kode_jumat;
+    protected $range_sholat;
+
+    public function __construct($populasi = 0, $crossOver = 0.0, $mutasi = 0.0)
     {
-        public $pengampu = [];
-        public $jp = [];
-        public $dosen = [];
-        public $jenis_mk = [];
-        public $mapel = [];
-        public $individu = [];
-        public $induk = [];
-        public $waktu_dosen = [];
-        public $idosen = [];
-        public $jam = [];
-        public $hari = [];
-        public $ruangReguler = [];
-        public $tingkat_kelas = [];
-        public $tingkat_mapel = [];
+        parent::__construct();
 
-        protected $jenis_semester;
-        protected $tahun_akademik;
-        protected $populasi;
-        protected $crossOver;
-        protected $mutasi;
-        protected $kode_jumat;
-        protected $range_sholat;
-
-        public function __construct($populasi = 0, $crossOver = 0.0, $mutasi = 0.0)
-        {
-            parent::__construct();
-
-            $this->populasi = intval($populasi);
-            $this->crossOver = $crossOver;
-            $this->mutasi = $mutasi;
-            $this->kode_jumat = 5;
-            $this->range_sholat = [
-                'jumat' => [11.00, 13.00],
-                'ashar' => [11.45, 12.00],
-                'dzuhur' => [9.15, 9.30]
-            ];
-        }
-
-        public function AmbilData()
-        {
-            $rs_data = DB::table('guru_mata_pelajaran as a')
-                ->leftJoin('mapels as b', 'a.mapel_id', '=', 'b.id')
-                ->leftJoin('gurus as c', 'a.guru_id', '=', 'c.id')
-                ->select('a.id', 'b.jp', 'a.guru_id', 'b.jurusan', 'b.tingkat', 'a.mapel_id as mapel', 'c.beban_mengajar')
-                ->get();
-
-            foreach ($rs_data as $i => $data) {
-                $this->pengampu[$i] = intval($data->guru_id);
-                $this->jp[$i] = intval($data->jp);
-                $this->dosen[$i] = intval($data->guru_id);
-                $this->jenis_mk[$i] = $data->jurusan;
-                $this->mapel[$i] = $data->mapel;
-                $this->tingkat_mapel[$i] = $data->tingkat;
-                $this->idosen[$i] = intval($data->guru_id);
-                $this->waktu_dosen[$i] = [$data->guru_id, $data->beban_mengajar];
-            }
-
-            $this->jam = DB::table('jams')->pluck('id')->toArray();
-            $this->hari = DB::table('haris')->pluck('id')->toArray();
-            $this->ruangReguler = DB::table('kelas')->pluck('id')->toArray();
-
-            $this->tingkat_kelas = DB::table('kelas')->pluck('tingkat', 'id')->toArray();
-        }
-
-    private function formatJam($jam, $menit)
-    {
-        $jamFormatted = str_pad($jam, 2, '0', STR_PAD_LEFT);
-        $menitFormatted = str_pad($menit, 2, '0', STR_PAD_LEFT);
-        return "{$jamFormatted}:{$menitFormatted}:00";
-    }
-
-    private function hitungJam($jp)
-    {
-        $jamMulai = 7;
-        $menitMulai = 0;
-        $durasi = 45;
-        $totalMenitMulai = ($jamMulai * 60) + $menitMulai;
-        $totalMenitSelesai = $totalMenitMulai + ($jp * $durasi);
-
-        $jamSelesai = floor($totalMenitSelesai / 60);
-        $menitSelesai = $totalMenitSelesai % 60;
-
-        return [
-            'jam_mulai' => $this->formatJam($jamMulai, $menitMulai),
-            'jam_selesai' => $this->formatJam($jamSelesai, $menitSelesai)
+        $this->populasi = intval($populasi);
+        $this->crossOver = $crossOver;
+        $this->mutasi = $mutasi;
+        $this->kode_jumat = 5;
+        $this->range_sholat = [
+            'jumat' => [11.00, 13.00],
+            'ashar' => [11.45, 12.00],
+            'dzuhur' => [9.15, 9.30]
         ];
     }
 
+    public function AmbilData()
+    {
+        $rs_data = DB::table('guru_mata_pelajaran as a')
+            ->leftJoin('mapels as b', 'a.mapel_id', '=', 'b.id')
+            ->leftJoin('gurus as c', 'a.guru_id', '=', 'c.id')
+            ->select('a.id', 'b.jp', 'a.guru_id', 'b.jurusan', 'b.tingkat', 'a.mapel_id as mapel', 'c.beban_mengajar')
+            ->get();
+
+        foreach ($rs_data as $i => $data) {
+            $this->pengampu[$i] = intval($data->id);
+            $this->jp[$i] = intval($data->jp);
+            $this->dosen[$i] = intval($data->guru_id);
+            $this->jenis_mk[$i] = $data->jurusan;
+            $this->mapel[$i] = $data->mapel;
+            $this->tingkat_mapel[$i] = $data->tingkat;
+            $this->idosen[$i] = intval($data->guru_id);
+            $this->waktu_dosen[$i] = [$data->guru_id, $data->beban_mengajar];
+        }
+
+        $this->jam = DB::table('jams')->pluck('id')->toArray();
+        $this->hari = DB::table('haris')->pluck('id')->toArray();
+        $this->ruangReguler = DB::table('kelas')->pluck('id')->toArray();
+        $this->tingkat_kelas = DB::table('kelas')->pluck('tingkat', 'id')->toArray();
+    }
+
     public function Inisialisai()
-{
-    $jumlah_pengampu = count($this->pengampu);
-    $jumlah_jam = count($this->jam);
-    $jumlah_hari = count($this->hari);
-    $jumlah_ruang_reguler = count($this->ruangReguler);
+    {
 
-    for ($i = 0; $i < $this->populasi; $i++) {
-        foreach ($this->ruangReguler as $ruang) {
-            foreach ($this->pengampu as $j => $pengampu) {
+        $jumlahPengampu = count($this->pengampu);
+        $jumlahJam = count($this->jam);
+        $jumlahHari = count($this->hari);
+        $jumlahRuangReguler = count($this->ruangReguler);
+
+        for ($i = 0; $i < $this->populasi; $i++) {
+
+            for ($j = 0; $j < $jumlahPengampu; $j++) {
+
                 $jp = $this->jp[$j];
-                $available_jam = $this->filterJamSKS($this->jam, $this->range_sholat, $jp);
 
-                $jam_index = array_rand(array_slice($available_jam, 0, max(1, $jumlah_jam - ($jp - 1))));
-                $jam = $available_jam[$jam_index];
+                $this->individu[$i][$j][0] = $j;
 
-                $tingkat_mapel = $this->tingkat_mapel[$j];
-
-                if (isset($this->tingkat_kelas[$ruang]) && $this->tingkat_kelas[$ruang] == $tingkat_mapel) {
-                    $jamInfo = $this->hitungJam($jp);
-
-                    $haris = array_rand($this->hari);
-
-                    $this->individu[$i][] = [
-                        'pengampu' => $j,
-                        'jam' => $jam,
-                        'hari' => $haris,
-                        'ruang' => $ruang,
-                        'jam_mulai' => $jamInfo['jam_mulai'],
-                        'jam_selesai' => $jamInfo['jam_selesai']
-                    ];
+                // Penentuan jam secara acak ketika 1 jp
+                if ($jp == 1) {
+                    $this->individu[$i][$j][1] = mt_rand(0,  $jumlahJam - 1);
                 }
-            }
-        }
-    }
-}
 
-private function CekFitness($indv)
-{
-    $penalty = 0;
-    $jumlah_pengampu = count($this->pengampu);
+                // Penentuan jam secara acak ketika 2 jp
+                if ($jp == 2) {
+                    $this->individu[$i][$j][1] = mt_rand(0, ($jumlahJam - 1) - 1);
+                }
 
-    for ($i = 0; $i < $jumlah_pengampu; $i++) {
-        if (!isset($this->individu[$indv][$i]['jam'])) continue;
+                // Penentuan jam secara acak ketika 3 jp
+                if ($jp == 3) {
+                    $this->individu[$i][$j][1] = mt_rand(0, ($jumlahJam - 1) - 2);
+                }
 
-        $jp = $this->jp[$i];
-        $jam_a = $this->individu[$indv][$i]['jam'];
-        $hari_a = $this->individu[$indv][$i]['hari'];
-        $ruang_a = $this->individu[$indv][$i]['ruang'];
-        $dosen_a = $this->dosen[$i];
-        $mapel_a = $this->mapel[$i];
+                // Penentuan jam secara acak ketika 4 jp
+                if ($jp == 4) {
+                    $this->individu[$i][$j][1] = mt_rand(0, ($jumlahJam - 1) - 3);
+                }
 
-        for ($j = 0; $j < $jumlah_pengampu; $j++) {
-            if (!isset($this->individu[$indv][$j]['jam'])) continue;
-
-            $jam_b = $this->individu[$indv][$j]['jam'];
-            $hari_b = $this->individu[$indv][$j]['hari'];
-            $ruang_b = $this->individu[$indv][$j]['ruang'];
-            $dosen_b = $this->dosen[$j];
-            $mapel_b = $this->mapel[$j];
-
-            if ($i == $j) continue;
-
-            // Bentrok Jam dan Hari
-            if ($jam_a == $jam_b && $hari_a == $hari_b) {
-                $penalty++;
-            }
-
-            // Bentrok Jam, Hari, dan Ruang
-            if ($jam_a == $jam_b && $hari_a == $hari_b && $ruang_a == $ruang_b) {
-                $penalty++;
-            }
-
-            // Bentrok Dosen
-            if ($jam_a == $jam_b && $hari_a == $hari_b && $dosen_a == $dosen_b) {
-                $penalty++;
-            }
-
-            // Penalti jika mata kuliah yang sama tidak berada di hari yang sama secara berurutan
-            if ($mapel_a == $mapel_b && $ruang_a == $ruang_b && abs($hari_a - $hari_b) > 1) {
-                $penalty++;
+                $this->individu[$i][$j][2] = mt_rand(0, $jumlahHari - 1); // Penentuan hari secara acak
+                $this->individu[$i][$j][3] = mt_rand(0, $jumlahRuangReguler - 1);
             }
         }
     }
 
-    return 1 / (1 + $penalty);
-}
-
-
-        public function Seleksi($fitness)
-        {
-            $total_fitness = array_sum($fitness);
-            $probabilities = array_map(function ($f) use ($total_fitness) {
-                return $f / $total_fitness;
-            }, $fitness);
-
-            $cumulative_probabilities = [];
-            $cumulative = 0;
-            foreach ($probabilities as $prob) {
-                $cumulative += $prob;
-                $cumulative_probabilities[] = $cumulative;
-            }
-
-            $new_population = [];
-            for ($i = 0; $i < $this->populasi; $i++) {
-                $random = mt_rand() / mt_getrandmax();
-                foreach ($cumulative_probabilities as $index => $cumulative) {
-                    if ($random <= $cumulative) {
-                        $new_population[] = $this->individu[$index];
-                        break;
-                    }
-                }
-            }
-            $this->induk = $new_population;
-        }
-
-        public function startCrossOver()
-        {
-            $individu_baru = array(array(array()));
-            $jumlah_pengampu = count($this->pengampu);
-
-            for ($i = 0; $i < $this->populasi; $i += 2) {
-                if (!isset($this->induk[$i]) || !isset($this->induk[$i + 1])) {
-                    continue;
-                }
-
-                $b = 0;
-                $cr = mt_rand(0, mt_getrandmax() - 1) / mt_getrandmax();
-
-                if (floatval($cr) < floatval($this->crossOver)) {
-                    $a = mt_rand(0, $jumlah_pengampu - 2);
-                    while ($b <= $a) {
-                        $b = mt_rand(0, $jumlah_pengampu - 1);
-                    }
-
-                    for ($j = 0; $j < $a; $j++) {
-                        for ($k = 0; $k < 5; $k++) {
-                            $induk_i = intval($this->induk[$i]);
-                            $induk_i1 = intval($this->induk[$i + 1]);
-
-                            if (isset($this->individu[$induk_i][$j][$k])) {
-                                $individu_baru[$i][$j][$k] = $this->individu[$induk_i][$j][$k];
-                            }
-                            if (isset($this->individu[$induk_i1][$j][$k])) {
-                                $individu_baru[$i + 1][$j][$k] = $this->individu[$induk_i1][$j][$k];
-                            }
-                        }
-                    }
-
-                    for ($j = $a; $j < $b; $j++) {
-                        for ($k = 0; $k < 5; $k++) {
-                            $induk_i = intval($this->induk[$i]);
-                            $induk_i1 = intval($this->induk[$i + 1]);
-
-                            if (isset($this->individu[$induk_i1][$j][$k])) {
-                                $individu_baru[$i][$j][$k] = $this->individu[$induk_i1][$j][$k];
-                            }
-                            if (isset($this->individu[$induk_i][$j][$k])) {
-                                $individu_baru[$i + 1][$j][$k] = $this->individu[$induk_i][$j][$k];
-                            }
-                        }
-                    }
-
-                    for ($j = $b; $j < $jumlah_pengampu; $j++) {
-                        for ($k = 0; $k < 5; $k++) {
-                            $induk_i = intval($this->induk[$i]);
-                            $induk_i1 = intval($this->induk[$i + 1]);
-
-                            if (isset($this->individu[$induk_i][$j][$k])) {
-                                $individu_baru[$i][$j][$k] = $this->individu[$induk_i][$j][$k];
-                            }
-                            if (isset($this->individu[$induk_i1][$j][$k])) {
-                                $individu_baru[$i + 1][$j][$k] = $this->individu[$induk_i1][$j][$k];
-                            }
-                        }
-                    }
-                } else {
-                    for ($j = 0; $j < $jumlah_pengampu; $j++) {
-                        for ($k = 0; $k < 5; $k++) {
-                            $induk_i = intval($this->induk[$i]);
-                            $induk_i1 = intval($this->induk[$i + 1]);
-
-                            if (isset($this->individu[$induk_i][$j][$k])) {
-                                $individu_baru[$i][$j][$k] = $this->individu[$induk_i][$j][$k];
-                            }
-                            if (isset($this->individu[$induk_i1][$j][$k])) {
-                                $individu_baru[$i + 1][$j][$k] = $this->individu[$induk_i1][$j][$k];
-                            }
-                        }
-                    }
-                }
-            }
-
-            for ($i = 0; $i < $this->populasi; $i += 2) {
-                for ($j = 0; $j < $jumlah_pengampu; $j++) {
-                    for ($k = 0; $k < 5; $k++) {
-                        if (isset($individu_baru[$i][$j][$k])) {
-                            $this->individu[$i][$j][$k] = $individu_baru[$i][$j][$k];
-                        }
-                        if (isset($individu_baru[$i + 1][$j][$k])) {
-                            $this->individu[$i + 1][$j][$k] = $individu_baru[$i + 1][$j][$k];
-                        }
-                    }
-                }
-            }
-        }
-
-
-        // public function StartCrossOver()
-        // {
-        //     $jumlah_pengampu = count($this->pengampu);
-
-        //     for ($i = 0; $i < $this->populasi; $i += 2) {
-        //         if (mt_rand() / mt_getrandmax() < $this->crossOver) {
-        //             list($this->individu[$i], $this->individu[$i + 1]) = $this->IndividuCrossOver($this->induk[$i], $this->induk[$i + 1], $jumlah_pengampu);
-        //         } else {
-        //             $this->individu[$i] = $this->induk[$i];
-        //             $this->individu[$i + 1] = $this->induk[$i + 1];
-        //         }
-        //     }
-        // }
-
-        public function HitungFitness()
-        {
-            $fitness = [];
-            for ($indv = 0; $indv < $this->populasi; $indv++) {
-                $fitness[$indv] = $this->CekFitness($indv);
-            }
-            return $fitness;
-        }
-
-        public function Mutasi()
-        {
-            $fitness = [];
-            $jumlah_pengampu = count($this->pengampu);
-            $jumlah_jam = count($this->jam);
-            $jumlah_hari = count($this->hari);
-
-            for ($i = 0; $i < $this->populasi; $i++) {
-                if (mt_rand(0, 100) / 100 < $this->mutasi) {
-                    $krom = mt_rand(0, $jumlah_pengampu - 1);
-
-                    $j = intval($this->jp[$krom]);
-
-                    $available_jam = $this->filterJamSKS($this->jam, $this->range_sholat, $j);
-
-                    switch ($j) {
-                        case 1:
-                            $this->individu[$i][$krom][1] = array_rand($available_jam);
-                            break;
-                        case 2:
-                            $this->individu[$i][$krom][1] = array_rand(array_slice($available_jam, 0, count($available_jam) - 1));
-                            break;
-                        case 3:
-                            $this->individu[$i][$krom][1] = array_rand(array_slice($available_jam, 0, count($available_jam) - 2));
-                            break;
-                        case 4:
-                            $this->individu[$i][$krom][1] = array_rand(array_slice($available_jam, 0, count($available_jam) - 3));
-                            break;
-                    }
-
-                    $this->individu[$i][$krom][2] = mt_rand(0, $jumlah_hari - 1);
-                    $this->individu[$i][$krom][3] = intval($this->ruangReguler[mt_rand(0, count($this->ruangReguler) - 1)]);
-                }
-
-                $fitness[$i] = $this->CekFitness($i);
-            }
-
-            return $fitness;
-        }
-
-        public function GetIndividu($indv)
+    private function CekFitness($indv)
     {
-        return array_map(function ($ind) {
-            return [
-                'pengampu' => isset($ind['pengampu']) ? $this->pengampu[$ind['pengampu']] : null,
-                'jam' => isset($ind['jam']) ? $ind['jam'] : null,
-                'hari' => isset($ind['hari']) ? $this->hari[$ind['hari']] : null,
-                'ruang' => isset($ind['ruang']) ? $ind['ruang'] : null,
-                'mapel' => isset($ind['pengampu']) ? $this->mapel[$ind['pengampu']] : null,
-                'jam_mulai' => isset($ind['jam_mulai']) ? $ind['jam_mulai'] : null,
-                'jam_selesai' => isset($ind['jam_selesai']) ? $ind['jam_selesai'] : null
-            ];
-        }, $this->individu[$indv]);
-    }
+        $penalty = 0;
 
-        private function IndividuCrossOver($indv1, $indv2, $jumlah_pengampu)
-    {
-        $indv1 = array_values($indv1);
-        $indv2 = array_values($indv2);
+        // $hari_jumat = intval($this->kode_jumat);
+        // $jumat_0 = intval($this->range_jumat[0]);
+        // $jumat_1 = intval($this->range_jumat[1]);
+        // $jumat_2 = intval($this->range_jumat[2]);
 
-        $acak = mt_rand(1, $jumlah_pengampu - 1);
+        //var_dump($this->range_jumat);
+        //exit();
+
+        $jumlah_pengampu = count($this->pengampu);
 
         for ($i = 0; $i < $jumlah_pengampu; $i++) {
-            if (isset($indv1[$i]) && isset($indv2[$i])) {
-                if ($i <= $acak) {
-                    $temp_indv1[$i] = $indv1[$i];
-                    $temp_indv2[$i] = $indv2[$i];
-                } else {
-                    $temp_indv1[$i] = $indv2[$i];
-                    $temp_indv2[$i] = $indv1[$i];
+            if (!isset($this->individu[$indv][$i][1])) continue;
+
+            $jp = intval($this->jp[$i]);
+
+            $jam_a = intval($this->individu[$indv][$i][1]);
+            $hari_a = intval($this->individu[$indv][$i][2]);
+            $ruang_a = intval($this->individu[$indv][$i][3]);
+            $dosen_a = intval($this->dosen[$i]);
+
+
+            for ($j = 0; $j < $jumlah_pengampu; $j++) {
+                if (!isset($this->individu[$indv][$j][1])) continue;
+                $jam_b = intval($this->individu[$indv][$j][1]);
+                $hari_b = intval($this->individu[$indv][$j][2]);
+                $ruang_b = intval($this->individu[$indv][$j][3]);
+                $dosen_b = intval($this->dosen[$j]);
+
+
+                //1.bentrok ruang dan waktu dan 3.bentrok dosen
+
+                //ketika pemasaran matakuliah sama, maka langsung ke perulangan berikutnya
+                if ($i == $j)
+                    continue;
+
+                //#region Bentrok Ruang dan Waktu
+                //Ketika jam,hari dan ruangnya sama, maka penalty + satu
+                if (
+                    $jam_a == $jam_b &&
+                    $hari_a == $hari_b &&
+                    $ruang_a == $ruang_b
+                ) {
+                    $penalty += 1;
+                }
+
+                //Ketika jp  = 2,
+                //hari dan ruang sama, dan
+                //jam kedua sama dengan jam pertama matakuliah yang lain, maka penalty + 1
+                if ($jp >= 2) {
+                    if (
+                        $jam_a + 1 == $jam_b &&
+                        $hari_a == $hari_b &&
+                        $ruang_a == $ruang_b
+                    ) {
+                        $penalty += 1;
+                    }
+                }
+
+
+                //Ketika jp  = 3,
+                //hari dan ruang sama dan
+                //jam ketiga sama dengan jam pertama matakuliah yang lain, maka penalty + 1
+                if ($jp >= 3) {
+                    if (
+                        $jam_a + 2 == $jam_b &&
+                        $hari_a == $hari_b &&
+                        $ruang_a == $ruang_b
+                    ) {
+                        $penalty += 1;
+                    }
+                }
+
+                //Ketika jp  = 4,
+                //hari dan ruang sama dan
+                //jam ketiga sama dengan jam pertama matakuliah yang lain, maka penalty + 1
+                if ($jp >= 4) {
+                    if (
+                        $jam_a + 3 == $jam_b &&
+                        $hari_a == $hari_b &&
+                        $ruang_a == $ruang_b
+                    ) {
+                        $penalty += 1;
+                    }
+                }
+
+                //______________________BENTROK DOSEN
+                if (
+                    //ketika jam sama
+                    $jam_a == $jam_b &&
+                    //dan hari sama
+                    $hari_a == $hari_b &&
+                    //dan dosennya sama
+                    $dosen_a == $dosen_b
+                ) {
+                    //maka...
+                    $penalty += 1;
+                }
+
+
+
+                if ($jp >= 2) {
+                    if (
+                        //ketika jam sama
+                        ($jam_a + 1) == $jam_b &&
+                        //dan hari sama
+                        $hari_a == $hari_b &&
+                        //dan dosennya sama
+                        $dosen_a == $dosen_b
+                    ) {
+                        //maka...
+                        $penalty += 1;
+                    }
+                }
+
+                if ($jp >= 3) {
+                    if (
+                        //ketika jam sama
+                        ($jam_a + 2) == $jam_b &&
+                        //dan hari sama
+                        $hari_a == $hari_b &&
+                        //dan dosennya sama
+                        $dosen_a == $dosen_b
+                    ) {
+                        //maka...
+                        $penalty += 1;
+                    }
+                }
+
+                if ($jp >= 4) {
+                    if (
+                        //ketika jam sama
+                        ($jam_a + 3) == $jam_b &&
+                        //dan hari sama
+                        $hari_a == $hari_b &&
+                        //dan dosennya sama
+                        $dosen_a == $dosen_b
+                    ) {
+                        //maka...
+                        $penalty += 1;
+                    }
                 }
             }
         }
 
-        return [$temp_indv1, $temp_indv2];
+        $fitness = floatval(1 / (1 + $penalty));
+
+        return $fitness;
     }
 
-        function filterJamSKS($dataJam, $rangeSholat, $jp, $hari = 1)
+    public function HitungFitness()
+    {
+        //hard constraint
+        //1.bentrok ruang dan waktu
+        //2.bentrok sholat jumat
+        //3.bentrok dosen
+        //4.bentrok keinginan waktu dosen
+        //5.bentrok waktu dhuhur
+        //=>6.praktikum harus pada ruang lab {telah ditetapkan dari awal perandoman
+        //    bahwa jika praktikum harus ada pada LAB dan mata kuliah reguler harus
+        //    pada kelas reguler
+
+
+        //soft constraint //TODO
+        //$fitness = array();
+
+        for ($indv = 0; $indv < $this->populasi; $indv++) {
+            $fitness[$indv] = $this->CekFitness($indv);
+        }
+
+        return $fitness;
+    }
+
+    public function Seleksi($fitness)
+    {
+        $jumlah = 0;
+        $rank   = array();
+
+        for ($i = 0; $i < $this->populasi; $i++) {
+            //proses ranking berdasarkan nilai fitness
+            $rank[$i] = 1;
+            for ($j = 0; $j < $this->populasi; $j++) {
+                //ketika nilai fitness jadwal sekarang lebih dari nilai fitness jadwal yang lain,
+                //ranking + 1;
+                //if (i == j) continue;
+
+                $fitnessA = floatval($fitness[$i]);
+                $fitnessB = floatval($fitness[$j]);
+
+                if ($fitnessA > $fitnessB) {
+                    $rank[$i] += 1;
+                }
+            }
+
+            $jumlah += $rank[$i];
+        }
+
+        $jumlah_rank = count($rank);
+        for ($i = 0; $i < $this->populasi; $i++) {
+            //proses seleksi berdasarkan ranking yang telah dibuat
+            //int nexRandom = random.Next(1, jumlah);
+            //random = new Random(nexRandom);
+            $target = mt_rand(0, $jumlah - 1);
+
+            $cek    = 0;
+            for ($j = 0; $j < $jumlah_rank; $j++) {
+                $cek += $rank[$j];
+                if (intval($cek) >= intval($target)) {
+                    $this->induk[$i] = $j;
+                    break;
+                }
+            }
+        }
+    }
+
+    public function StartCrossOver()
+    {
+        $individu_baru = array(array(array()));
+        $jumlah_pengampu = count($this->pengampu);
+
+        for ($i = 0; $i < $this->populasi; $i += 2) //perulangan untuk jadwal yang terpilih
         {
-            $excep = [];
+            $b = 0;
 
-            foreach ($rangeSholat as $k => $v) {
-                if ($hari == 5 && $k == 'jumat') {
-                    $excep = array_merge($excep, $v);
-                } elseif ($k != 'jumat') {
-                    $excep = array_merge($excep, $v);
+            $cr = mt_rand(0, mt_getrandmax() - 1) / mt_getrandmax();
+
+            //Two point crossover
+            if (floatval($cr) < floatval($this->crossOver)) {
+                //ketika nilai random kurang dari nilai probabilitas pertukaran
+                //maka jadwal mengalami prtukaran
+
+                $a = mt_rand(0, $jumlah_pengampu - 2);
+                while ($b <= $a) {
+                    $b = mt_rand(0, $jumlah_pengampu - 1);
+                }
+
+
+                //var_dump($this->induk);
+
+
+                //penentuan jadwal baru dari awal sampai titik pertama
+                for ($j = 0; $j < $a; $j++) {
+                    for ($k = 0; $k < 4; $k++) {
+                        $individu_baru[$i][$j][$k]     = $this->individu[$this->induk[$i]][$j][$k];
+                        $individu_baru[$i + 1][$j][$k] = $this->individu[$this->induk[$i + 1]][$j][$k];
+                    }
+                }
+
+                //Penentuan jadwal baru dai titik pertama sampai titik kedua
+                for ($j = $a; $j < $b; $j++) {
+                    for ($k = 0; $k < 4; $k++) {
+                        $individu_baru[$i][$j][$k]     = $this->individu[$this->induk[$i + 1]][$j][$k];
+                        $individu_baru[$i + 1][$j][$k] = $this->individu[$this->induk[$i]][$j][$k];
+                    }
+                }
+
+                //penentuan jadwal baru dari titik kedua sampai akhir
+                for ($j = $b; $j < $jumlah_pengampu; $j++) {
+                    for ($k = 0; $k < 4; $k++) {
+                        $individu_baru[$i][$j][$k]     = $this->individu[$this->induk[$i]][$j][$k];
+                        $individu_baru[$i + 1][$j][$k] = $this->individu[$this->induk[$i + 1]][$j][$k];
+                    }
+                }
+            } else { //Ketika nilai random lebih dari nilai probabilitas pertukaran, maka jadwal baru sama dengan jadwal terpilih
+                for ($j = 0; $j < $jumlah_pengampu; $j++) {
+                    for ($k = 0; $k < 4; $k++) {
+                        $individu_baru[$i][$j][$k]     = $this->individu[$this->induk[$i]][$j][$k];
+                        $individu_baru[$i + 1][$j][$k] = $this->individu[$this->induk[$i + 1]][$j][$k];
+                    }
                 }
             }
+        }
 
-            $excep = array_unique($excep);
-            $excep = array_map(function ($e) {
-                return $e - 1;
-            }, $excep);
+        $jumlah_pengampu = count($this->pengampu);
 
-            return array_diff($dataJam, $excep);
+        for ($i = 0; $i < $this->populasi; $i += 2) {
+            for ($j = 0; $j < $jumlah_pengampu; $j++) {
+                for ($k = 0; $k < 4; $k++) {
+                    $this->individu[$i][$j][$k] = $individu_baru[$i][$j][$k];
+                    $this->individu[$i + 1][$j][$k] = $individu_baru[$i + 1][$j][$k];
+                }
+            }
         }
     }
+
+    public function Mutasi()
+    {
+        $fitness = array();
+        //proses perandoman atau penggantian komponen untuk tiap jadwal baru
+        $r       = mt_rand(0, mt_getrandmax() - 1) / mt_getrandmax();
+        $jumlah_pengampu = count($this->pengampu);
+        $jumlah_jam = count($this->jam);
+        $jumlah_hari = count($this->hari);
+        $jumlah_ruang_reguler = count($this->ruangReguler);
+
+        for ($i = 0; $i < $this->populasi; $i++) {
+            //Ketika nilai random kurang dari nilai probalitas Mutasi,
+            //maka terjadi penggantian komponen
+
+            if ($r < $this->mutasi) {
+                //Penentuan pada matakuliah dan kelas yang mana yang akan dirandomkan atau diganti
+                $krom = mt_rand(0, $jumlah_pengampu - 1);
+
+                $j = intval($this->sks[$krom]);
+
+                switch ($j) {
+                    case 1:
+                        $this->individu[$i][$krom][1] = mt_rand(0, $jumlah_jam - 1);
+                        break;
+                    case 2:
+                        $this->individu[$i][$krom][1] = mt_rand(0, ($jumlah_jam - 1) - 1);
+                        break;
+                    case 3:
+                        $this->individu[$i][$krom][1] = mt_rand(0, ($jumlah_jam - 1) - 2);
+                        break;
+                    case 4:
+                        $this->individu[$i][$krom][1] = mt_rand(0, ($jumlah_jam - 1) - 3);
+                        break;
+                }
+                //Proses penggantian hari
+                $this->individu[$i][$krom][2] = mt_rand(0, $jumlah_hari - 1);
+
+                //proses penggantian ruang
+                $this->individu[$i][$krom][3] = $this->ruangReguler[mt_rand(0, $jumlah_ruang_reguler - 1)];
+            }
+
+            $fitness[$i] = $this->CekFitness($i);
+        }
+        return $fitness;
+    }
+
+
+    public function GetIndividu($indv)
+    {
+        //return individu;
+
+        //int[,] individu_solusi = new int[mata_kuliah.Length, 4];
+        $individu_solusi = array(array());
+
+        for ($j = 0; $j < count($this->pengampu); $j++) {
+            $individu_solusi[$j][0] = intval($this->pengampu[$this->individu[$indv][$j][0]]);
+            $individu_solusi[$j][1] = intval($this->jam[$this->individu[$indv][$j][1]]);
+            $individu_solusi[$j][2] = intval($this->hari[$this->individu[$indv][$j][2]]);
+            $individu_solusi[$j][3] = intval($this->individu[$indv][$j][3]);
+        }
+
+        return $individu_solusi;
+    }
+}

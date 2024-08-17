@@ -10,8 +10,7 @@ class Jadwal extends Model
     use HasFactory;
 
     protected $fillable = [
-        'mapel_id',
-        'guru_id',
+        'pengampu_id',
         'kelas_id',
         'hari_id',
         'jam_id',
@@ -19,14 +18,9 @@ class Jadwal extends Model
         'waktu_selesai',
     ];
 
-    public function mapel()
+    public function pengampu()
     {
-        return $this->belongsTo(Mapel::class, 'mapel_id');
-    }
-
-    public function guru()
-    {
-        return $this->belongsTo(Guru::class, 'guru_id');
+        return $this->belongsTo(GuruMapel::class, 'pengampu_id');
     }
 
     public function kelas()

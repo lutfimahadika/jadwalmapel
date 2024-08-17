@@ -6,12 +6,12 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0">Mata Pelajaran</h1>
+            <h1 class="m-0">Kelas</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Mata Pelajaran</li>
+              <li class="breadcrumb-item active">Kelas</li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
@@ -27,7 +27,7 @@
                 <a href="{{ route('admin.kelas.create') }}" class="btn btn-primary mb-3" >Tambah Data</a>
               <div class="card">
                 <div class="card-header">
-                  <h3 class="card-title">Tabel Mata Pelajaran</h3>
+                  <h3 class="card-title">Tabel Kelas</h3>
 
                   <div class="card-tools">
                     <form action="{{ route('admin.index_kelas') }}" method="GET">

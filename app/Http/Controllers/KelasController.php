@@ -30,7 +30,7 @@ class KelasController extends Controller
 
         $validator = Validator::make($request->all(),[
             'nama_kelas' => 'required',
-            'tingkat' => 'numeric',
+            'tingkat' => 'required|numeric',
         ]);
 
         if($validator->fails()) return redirect()->back()->withInput()->withErrors($validator);
@@ -54,7 +54,7 @@ class KelasController extends Controller
 
         $validator = Validator::make($request->all(),[
             'nama_kelas' => 'required',
-            'tingkat' => 'numeric',
+            'tingkat' => 'required|numeric',
         ]);
 
         if($validator->fails()) return redirect()->back()->withInput()->withErrors($validator);
