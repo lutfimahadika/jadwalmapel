@@ -77,7 +77,7 @@ class KelasController extends Controller
             $data->delete();
         }
 
-        return redirect()->route('admin.index');
+        return redirect()->route('admin.index_kelas');
     }
-    //user controller end
+    //kelas controller end
 }

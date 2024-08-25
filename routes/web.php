@@ -11,6 +11,7 @@ use App\Http\Controllers\JadwalController;
 use App\Http\Controllers\DataTableController;
 use App\Http\Controllers\GenetikaController;
 use App\Http\Controllers\GurumapelController;
+use App\Http\Controllers\HariController;
 use App\Models\Genetika;
 
 /*
@@ -82,6 +83,14 @@ Route::group(['prefix' => 'admin','middleware' => ['auth'], 'as' => 'admin.'] , 
     Route::delete('/delete-kelas/{id}', [KelasController::class, 'delete'])->name('kelas.delete');
 
     //kelas
+    Route::get('/hari', [HariController::class, 'index_hari'])->name('index_hari');
+    Route::get('/create-hari', [HariController::class, 'create'])->name('hari.create');
+    Route::post('/store-hari', [HariController::class, 'store'])->name('hari.store');
+    Route::get('/edit-hari/{id}', [HariController::class, 'edit'])->name('hari.edit');
+    Route::put('/update-hari/{id}', [HariController::class, 'update'])->name('hari.update');
+    Route::delete('/delete-hari/{id}', [HariController::class, 'delete'])->name('hari.delete');
+
+    //jam
     Route::get('/jam', [JamController::class, 'index_jam'])->name('index_jam');
     Route::get('/create-jam', [JamController::class, 'create'])->name('jam.create');
     Route::post('/store-jam', [JamController::class, 'store'])->name('jam.store');

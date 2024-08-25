@@ -3,7 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>AdminLTE 3 | Dashboard</title>
+  <title>Aplikasi Pembuatan Jadwal Mata Pelajaran SMAN 1 Singaparna</title>
+  <link rel="icon" type="image/png" href="{{ asset('img/logo.png') }}">
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -136,6 +137,14 @@
             </a>
           </li>
           <li class="nav-item">
+            <a href="{{ route('admin.index_hari')}}" class="nav-link">
+              <i class="nav-icon fas fa-calendar-alt"></i>
+              <p>
+                Hari
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
             <a href="{{ route('admin.index_jam')}}" class="nav-link">
               <i class="nav-icon fas fa-clock"></i>
               <p>
@@ -151,14 +160,14 @@
               </p>
             </a>
           </li>
-          <li class="nav-item">
+          {{-- <li class="nav-item">
             <a href="{{ route('logout') }}" class="nav-link">
               <i class="nav-icon fas fa-th"></i>
               <p>
                 Logout
               </p>
             </a>
-          </li>
+          </li> --}}
         </ul>
       </nav>
       <!-- /.sidebar-menu -->

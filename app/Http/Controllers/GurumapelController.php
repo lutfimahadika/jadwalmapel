@@ -13,15 +13,20 @@ use Illuminate\Support\Facades\Validator;
         class GurumapelController extends Controller
         {
             //mapel controller
-            public function index_gurumengajar(Request $request){
+            public function index_gurumengajar(Request $request) {
                 $data = GuruMapel::with(['guru', 'mapel']);
 
-                if($request->get('search')){
-                    $data = $data->where('nama_guru','LIKE','%'.$request->get('search').'%');
+                if ($request->get('search')) {
+                    $searchTerm = $request->get('search');
+                    $data = $data->whereHas('guru', function($query) use ($searchTerm) {
+                        $query->where('nama_guru', 'LIKE', '%' . $searchTerm . '%');
+                    });
                 }
+
                 $data = $data->orderBy('guru_id')->get();
-                return view('gurumengajar.index',compact('data','request'));
+                return view('gurumengajar.index', compact('data', 'request'));
             }
+
 
             public function create(){
                 $dataMapel = Mapel::select('id', 'mata_pelajaran')->get();
