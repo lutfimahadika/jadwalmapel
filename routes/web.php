@@ -100,7 +100,8 @@ Route::group(['prefix' => 'admin','middleware' => ['auth'], 'as' => 'admin.'] , 
 
     // routes/web.php
     Route::get('/genetika', [GenetikaController::class, 'index'])->name('genetika.index');
-    Route::get('/genetika/generate', [Genetika::class, 'generate'])->name('genetika.generate');
+
+    Route::get('/jadwal/generate',[GenetikaController::class,'generate'])->name('jadwal.generate');
 
 });
 

@@ -30,7 +30,7 @@
                 </div>
                 <!-- /.card-header -->
                 <div class="card-body table-responsive p-0">
-                  <a href="{{ route('admin.genetika.generate') }}" class="btn btn-primary btn-lg" style="margin:15px;">Generate Jadwal</a>
+                  <a href="{{route('admin.jadwal.generate')}}" class="btn btn-primary btn-lg" style="margin:15px;">Generate Jadwal</a>
                   <table class="table table-hover text-nowrap">
                     <thead>
                         <tr>
@@ -43,42 +43,6 @@
                         </tr>
                     </thead>
                     <tbody>
-                      @foreach ($schedules as $schedule)
-                          @if (
-                              is_null($schedule->mapel) &&
-                              is_null($schedule->jam_id) &&
-                              is_null($schedule->guru) &&
-                              is_null($schedule->kelas) &&
-                              is_null($schedule->hari)
-                          )
-                              @continue
-                          @endif
-
-                          <tr>
-                              <td>
-                                  @if ($schedule->mapel && $schedule->mapel->mata_pelajaran)
-                                      {{ $schedule->mapel->mata_pelajaran }}
-                                  @elseif (is_null($schedule->mapel) && is_null($schedule->jam_id))
-                                      ISTIRAHAT
-                                  @else
-                                      UPACARA
-                                  @endif
-                              </td>
-                              <td>
-                                  @if ($schedule->guru && $schedule->guru->nama_guru)
-                                      {{ $schedule->guru->nama_guru }}
-                                  @elseif (is_null($schedule->guru) && is_null($schedule->jam_id))
-                                      ISTIRAHAT
-                                  @else
-                                      UPACARA
-                                  @endif
-                              </td>
-                              <td>{{ isset($schedule->kelas->nama_kelas) ? $schedule->kelas->nama_kelas : '' }}</td>
-                              <td>{{ isset($schedule->hari->nama_hari) ? $schedule->hari->nama_hari : '' }}</td>
-                              <td>{{ isset($schedule->jam->jam_awal) ? $schedule->jam->jam_awal : '' }}</td>
-                              <td>{{ isset($schedule->jam->jam_akhir) ? $schedule->jam->jam_akhir : '' }}</td>
-                          </tr>
-                      @endforeach
                   </tbody>
                   </table>
                 </div>
