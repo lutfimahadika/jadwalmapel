@@ -11,7 +11,6 @@ class Jadwal extends Model
 
     protected $fillable = [
         'pengampu_id',
-        'kelas_id',
         'hari_id',
         'jam_id',
         'waktu_mulai',
@@ -21,11 +20,6 @@ class Jadwal extends Model
     public function pengampu()
     {
         return $this->belongsTo(GuruMapel::class, 'pengampu_id');
-    }
-
-    public function kelas()
-    {
-        return $this->belongsTo(Kelas::class, 'kelas_id');
     }
 
     public function hari()

@@ -30,7 +30,7 @@ class HomeController extends Controller
 
         return view('dashboard', $data);
 
-        return abort(403);
+        // return abort(403);
     }
     //end dashboard
 
