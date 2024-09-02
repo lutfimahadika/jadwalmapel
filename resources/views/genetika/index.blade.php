@@ -39,6 +39,7 @@
                                             <th>Guru</th>
                                             <th>Kelas</th>
                                             <th>Hari</th>
+                                            <th>JP</th>
                                             <th>Jam Mulai</th>
                                             <th>Jam Selesai</th>
                                         </tr>
@@ -49,6 +50,7 @@
                                                 <td>{{ $jadwal->pengampu->mapel->mata_pelajaran }}</td>
                                                 <td>{{ $jadwal->pengampu->guru->nama_guru }}</td>
                                                 <td>{{ $jadwal->pengampu->kelas->nama_kelas }}</td>
+                                                <td>{{ $jadwal->pengampu->mapel->jp }}</td>
                                                 <td>{{ $jadwal->hari->nama_hari }}</td>
                                                 <td>{{ $jadwal->waktu_mulai }}</td>
                                                 <td>{{ $jadwal->waktu_selesai }}</td>

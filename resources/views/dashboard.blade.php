@@ -16,7 +16,7 @@
     <!-- Main content -->
     <section class="content">
       <div class="container-fluid">
-        @can('view_dashboard')
+        {{-- @can('view_dashboard') --}}
         <div class="row">
             <div class="col-lg-4 col-12">
               <!-- small box -->
@@ -70,7 +70,7 @@
               </div>
             </div>
           </div>
-          @endcan
+          {{-- @endcan --}}
 
         <!-- /.row -->
       </div><!-- /.container-fluid -->

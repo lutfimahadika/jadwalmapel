@@ -56,7 +56,7 @@ class Genetika{
     // Ambil Data Guru Mengajar
     public function AmbilData()
     {
-        $datas = GuruMapel::with('guru','mapel')->get();
+        $datas = GuruMapel::with('guru','mapel')->take(20)->get();
 
         $i = 0;
         foreach ($datas as $data) {
@@ -69,6 +69,8 @@ class Genetika{
             $this->jurusanMapel[$i] = $data->mapel->jurusan;
             $i++;
         }
+
+        // dd($this->kelas);
 
         $dataJam = Jam::all();
 
@@ -234,30 +236,30 @@ class Genetika{
                 }
 
                 if ($jamPelajaran == 5 || $jamPelajaran == 3) {
-                    if ($jam_a + 2 == $jam_b && $hari_a + 2 == $hari_b && $kelas_a + 2 == $kelas_b) {
+                    if (($jam_a + 2 == $jam_b) && ($hari_a + 2 == $hari_b) && ($kelas_a == $kelas_b)) {
                         $penalty += 1;
                     }
                 }
 
                 if ($jamPelajaran == 4 || $jamPelajaran == 2) {
-                    if ($jam_a + 1 == $jam_b && $hari_a + 1 == $hari_b && $kelas_a + 1 == $kelas_b) {
+                    if (($jam_a + 1 == $jam_b) && ($hari_a + 1 == $hari_b) && ($kelas_a  == $kelas_b)) {
                         $penalty += 1;
                     }
                 }
 
                 // Bentrok Guru
-                if($jam_a == $jam_b && $hari_a == $hari_b && $guru_a == $guru_b){
+                if(($jam_a == $jam_b) && ($hari_a == $hari_b) && ($guru_a == $guru_b)){
                     $penalty += 1;
                 }
 
                 if ($jamPelajaran == 5 || $jamPelajaran == 3) {
-                    if ($jam_a + 2 == $jam_b && $hari_a + 2 == $hari_b && $guru_a == $guru_b) {
+                    if (($jam_a + 2 == $jam_b) && ($hari_a + 2 == $hari_b) && ($guru_a == $guru_b)) {
                         $penalty += 1;
                     }
                 }
 
                 if ($jamPelajaran == 4 || $jamPelajaran == 2) {
-                    if ($jam_a + 1 == $jam_b && $hari_a + 1 == $hari_b && $guru_a == $guru_b) {
+                    if (($jam_a + 1 == $jam_b) && ($hari_a + 1 == $hari_b) && ($guru_a == $guru_b)) {
                         $penalty += 1;
                     }
                 }
@@ -303,14 +305,12 @@ class Genetika{
             }
 
             if ($hari_a == $hari_senin) {
-                if ($jamPelajaran == 1) {
-                    if($jam_a == 0){
-                        $penalty += 1;
-                    }
+                if($jam_a == 0){
+                    $penalty += 1;
+                }
 
-                    if (($jam_a - 1) == 0) {
-                        $penalty += 1;
-                    }
+                if (($jam_a - 1) == 0) {
+                    $penalty += 1;
                 }
 
             }

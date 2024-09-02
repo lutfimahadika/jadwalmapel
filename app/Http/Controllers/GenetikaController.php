@@ -22,7 +22,7 @@ class GenetikaController extends Controller
     public function generate()
     {
         $genetik = new Genetika(
-            150, // jumlah populasi
+            100, // jumlah populasi
             0.70, // probabilitas crossover
             0.40, // probabilitas mutasi
             1000, // jumlah generasi
