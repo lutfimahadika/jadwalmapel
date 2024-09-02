@@ -10,7 +10,8 @@ use App\Models\GuruMengajar;
 use App\Models\Hari;
 use Illuminate\Support\Arr;
 
-class Genetika{
+class Genetika
+{
 
     private $guruMengajar = [];
     private $mapel = [];
@@ -42,7 +43,8 @@ class Genetika{
     private $range_jumat;
     private $dzuhur;
 
-    function __construct($populasi,$crossover,$mutasi,$generasi,$senin,$jumat,$range_jumat,$dzuhur){
+    function __construct($populasi, $crossover, $mutasi, $generasi, $senin, $jumat, $range_jumat, $dzuhur)
+    {
         $this->populasi = intval($populasi);
         $this->crossover = $crossover;
         $this->mutasi = $mutasi;
@@ -56,7 +58,7 @@ class Genetika{
     // Ambil Data Guru Mengajar
     public function AmbilData()
     {
-        $datas = GuruMapel::with('guru','mapel')->take(20)->get();
+        $datas = GuruMapel::with('guru', 'mapel')->take(100)->get();
 
         $i = 0;
         foreach ($datas as $data) {
@@ -74,7 +76,7 @@ class Genetika{
 
         $dataJam = Jam::all();
 
-        $i=0;
+        $i = 0;
         foreach ($dataJam as $key => $jam) {
             $this->jam[$i] = $jam->id;
             $i++;
@@ -125,12 +127,11 @@ class Genetika{
 
 
         $dataHari = Hari::all();
-        $i=0;
+        $i = 0;
         foreach ($dataHari as $key => $hari) {
             $this->hari[$i] = $hari->id;
             $i++;
         }
-
     }
 
     // Inisialisasi Populasi
@@ -146,8 +147,8 @@ class Genetika{
         // $jumlahKelasMipa = count($this->kelasMipa);
         // $jumlahKelasIps = count($this->kelasIps);
 
-        for ($i=0; $i < $this->populasi ; $i++) {
-            for ($j=0; $j < $jumlahGuruMengajar ; $j++) {
+        for ($i = 0; $i < $this->populasi; $i++) {
+            for ($j = 0; $j < $jumlahGuruMengajar; $j++) {
 
                 $jamPelajaran = $this->jamPelajaran[$j];
 
@@ -156,26 +157,26 @@ class Genetika{
                 //Penentuan Jam Secara Acak berdasarkan jam pelajaran dan hari acak
                 if ($jamPelajaran == 5 || $jamPelajaran == 3) {
                     //Penentuan Jam Secara Acak
-                    $this->individu[$i][$j][1] = rand(0,($jumlahJam - 1) - 2);
+                    $this->individu[$i][$j][1] = rand(0, ($jumlahJam - 1) - 2);
 
                     //Penentuan Hari Secara Acak
-                    $this->individu[$i][$j][2] = rand(0,($jumlahHari-1) - 1);
+                    $this->individu[$i][$j][2] = rand(0, ($jumlahHari - 1) - 1);
                 }
 
                 if ($jamPelajaran == 4 || $jamPelajaran == 2) {
                     //Penentuan Jam Secara Acak
-                    $this->individu[$i][$j][1] = rand(0,($jumlahJam - 1) - 1);
+                    $this->individu[$i][$j][1] = rand(0, ($jumlahJam - 1) - 1);
 
                     //Penentuan Hari Secara Acak
-                    $this->individu[$i][$j][2] = rand(0,($jumlahHari-1));
+                    $this->individu[$i][$j][2] = rand(0, ($jumlahHari - 1));
                 }
 
                 if ($jamPelajaran == 1) {
                     //Penentuan Jam Secara Acak
-                    $this->individu[$i][$j][1] = rand(0,($jumlahJam - 1));
+                    $this->individu[$i][$j][1] = rand(0, ($jumlahJam - 1));
 
                     //Penentuan Hari Secara Acak
-                    $this->individu[$i][$j][2] = rand(0,($jumlahHari-1));
+                    $this->individu[$i][$j][2] = rand(0, ($jumlahHari - 1));
                 }
 
                 // dd($this->tingkatMapel[$j]);
@@ -212,14 +213,14 @@ class Genetika{
         $jumat_1 = intval($this->range_jumat[1]);
         $jumat_2 = intval($this->range_jumat[2]);
 
-        for ($i=0; $i < $jumlahGuruMengajar; $i++) {
-                $jamPelajaran = $this->jamPelajaran[$i];
-                $jam_a = $this->individu[$individu][$i][1];
-                $hari_a = $this->individu[$individu][$i][2];
-                $kelas_a = $this->kelas[$i];
-                $guru_a = $this->guru[$i];
+        for ($i = 0; $i < $jumlahGuruMengajar; $i++) {
+            $jamPelajaran = $this->jamPelajaran[$i];
+            $jam_a = $this->individu[$individu][$i][1];
+            $hari_a = $this->individu[$individu][$i][2];
+            $kelas_a = $this->kelas[$i];
+            $guru_a = $this->guru[$i];
 
-            for ($j=0; $j < $jumlahGuruMengajar; $j++) {
+            for ($j = 0; $j < $jumlahGuruMengajar; $j++) {
                 $jam_b = $this->individu[$individu][$j][1];
                 $hari_b = $this->individu[$individu][$j][2];
                 $kelas_b = $this->kelas[$j];
@@ -231,39 +232,38 @@ class Genetika{
                 }
 
                 //jika bentrok penalty + 1
-                if ($jam_a == $jam_b && $hari_a == $hari_b && $kelas_a == $kelas_b) {
+                if (($jam_a == $jam_b) && ($hari_a == $hari_b) ) {
                     $penalty += 1;
                 }
 
                 if ($jamPelajaran == 5 || $jamPelajaran == 3) {
-                    if (($jam_a + 2 == $jam_b) && ($hari_a + 2 == $hari_b) && ($kelas_a == $kelas_b)) {
+                    if (($jam_a + 2 == $jam_b) && ($hari_a + 2 == $hari_b)) {
                         $penalty += 1;
                     }
                 }
 
                 if ($jamPelajaran == 4 || $jamPelajaran == 2) {
-                    if (($jam_a + 1 == $jam_b) && ($hari_a + 1 == $hari_b) && ($kelas_a  == $kelas_b)) {
+                    if (($jam_a + 1 == $jam_b) && ($hari_a + 1 == $hari_b)) {
                         $penalty += 1;
                     }
                 }
 
-                // Bentrok Guru
-                if(($jam_a == $jam_b) && ($hari_a == $hari_b) && ($guru_a == $guru_b)){
+                // Bentrok Guru dan kelas
+                if (($jam_a == $jam_b) && ($hari_a == $hari_b) && ($guru_a == $guru_b) && ($kelas_a == $kelas_b)) {
                     $penalty += 1;
                 }
 
                 if ($jamPelajaran == 5 || $jamPelajaran == 3) {
-                    if (($jam_a + 2 == $jam_b) && ($hari_a + 2 == $hari_b) && ($guru_a == $guru_b)) {
+                    if (($jam_a + 2 == $jam_b) && ($hari_a + 2 == $hari_b) && ($guru_a == $guru_b) && ($kelas_a == $kelas_b)) {
                         $penalty += 1;
                     }
                 }
 
                 if ($jamPelajaran == 4 || $jamPelajaran == 2) {
-                    if (($jam_a + 1 == $jam_b) && ($hari_a + 1 == $hari_b) && ($guru_a == $guru_b)) {
+                    if (($jam_a + 1 == $jam_b) && ($hari_a + 1 == $hari_b) && ($guru_a == $guru_b) && ($kelas_a == $kelas_b)) {
                         $penalty += 1;
                     }
                 }
-
             }
 
             if (($hari_a) == $hari_jumat) {
@@ -305,27 +305,24 @@ class Genetika{
             }
 
             if ($hari_a == $hari_senin) {
-                if($jam_a == 0){
+                if ($jam_a == 0) {
                     $penalty += 1;
                 }
 
                 if (($jam_a - 1) == 0) {
                     $penalty += 1;
                 }
-
             }
-
-
         }
 
-        $fitness =  floatval(1/($penalty+1));
+        $fitness =  floatval(1 / ($penalty + 1));
         return $fitness;
     }
 
     public function HitungFitness()
     {
-        for ($individu=0; $individu < $this->populasi; $individu++) {
-           $fitness[$individu] = $this->CekFitness($individu);
+        for ($individu = 0; $individu < $this->populasi; $individu++) {
+            $fitness[$individu] = $this->CekFitness($individu);
         }
 
         return $fitness;
@@ -337,10 +334,10 @@ class Genetika{
         $jumlah = 0;
         $rank = array();
 
-        for ($i=0; $i < $this->populasi; $i++) {
+        for ($i = 0; $i < $this->populasi; $i++) {
             //Proses ranking berdasarkan fitness
             $rank[$i] = 1;
-            for ($j=0; $j < $this->populasi; $j++) {
+            for ($j = 0; $j < $this->populasi; $j++) {
                 //ketika nilai fitness jadwal sekarang lebih dari nilai fitness jadwal yang lain,
                 //ranking + 1;
                 //if (i == j) continue;
@@ -378,7 +375,7 @@ class Genetika{
         $jumlah_guruMengajar = count($this->guruMengajar);
 
         // Perulangan untuk jadwal terpilih
-        for ($i=0; $i < $this->populasi; $i+=2) {
+        for ($i = 0; $i < $this->populasi; $i += 2) {
             $b = 0;
             $cr = mt_rand(0, mt_getrandmax() - 1) / mt_getrandmax();
             //Two point crossover
@@ -461,27 +458,27 @@ class Genetika{
                 switch ($j) {
                     case 1:
                         $this->individu[$i][$krom][1] = mt_rand(0, $jumlah_jam - 1);
-                         //Proses penggantian hari
+                        //Proses penggantian hari
                         $this->individu[$i][$krom][2] = mt_rand(0, $jumlah_hari - 1);
                         break;
                     case 2:
                         $this->individu[$i][$krom][1] = mt_rand(0, ($jumlah_jam - 1) - 1);
-                         //Proses penggantian hari
+                        //Proses penggantian hari
                         $this->individu[$i][$krom][2] = mt_rand(0, ($jumlah_hari - 1) - 1);
                         break;
                     case 3:
                         $this->individu[$i][$krom][1] = mt_rand(0, ($jumlah_jam - 1) - 2);
-                         //Proses penggantian hari
+                        //Proses penggantian hari
                         $this->individu[$i][$krom][2] = mt_rand(0, ($jumlah_hari - 1) - 2);
                         break;
                     case 4:
                         $this->individu[$i][$krom][1] = mt_rand(0, ($jumlah_jam - 1) - 1);
-                         //Proses penggantian hari
+                        //Proses penggantian hari
                         $this->individu[$i][$krom][2] = mt_rand(0, ($jumlah_hari - 1) - 1);
                         break;
                     case 5:
                         $this->individu[$i][$krom][1] = mt_rand(0, ($jumlah_jam - 1) - 2);
-                         //Proses penggantian hari
+                        //Proses penggantian hari
                         $this->individu[$i][$krom][2] = mt_rand(0, ($jumlah_hari - 1) - 2);
                         break;
                 }
@@ -503,5 +500,4 @@ class Genetika{
 
         return $individu_solusi;
     }
-
 }

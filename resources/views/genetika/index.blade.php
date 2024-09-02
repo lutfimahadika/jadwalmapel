@@ -38,8 +38,8 @@
                                             <th>Mata Pelajaran</th>
                                             <th>Guru</th>
                                             <th>Kelas</th>
-                                            <th>Hari</th>
                                             <th>JP</th>
+                                            <th>Hari</th>
                                             <th>Jam Mulai</th>
                                             <th>Jam Selesai</th>
                                         </tr>
