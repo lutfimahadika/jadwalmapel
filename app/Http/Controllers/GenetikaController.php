@@ -24,7 +24,7 @@ class GenetikaController extends Controller
     public function generate()
     {
         $genetik = new Genetika(
-            10, // jumlah populasi
+            100, // jumlah populasi
             0.70, // probabilitas crossover
             0.40, // probabilitas mutasi
             1000, // jumlah generasi
@@ -47,7 +47,6 @@ class GenetikaController extends Controller
 
             for ($j = 0; $j < count($fitnessAfterMutation); $j++) {
                 if ($fitnessAfterMutation[$j] == 1) {
-
                     Jadwal::truncate();
 
                     $jadwal = array(array());

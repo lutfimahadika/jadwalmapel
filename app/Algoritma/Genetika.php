@@ -58,7 +58,7 @@ class Genetika
     // Ambil Data Guru Mengajar
     public function AmbilData()
     {
-        $datas = GuruMapel::with('guru', 'mapel')->take(50)->get();
+        $datas = GuruMapel::with('guru', 'mapel')->take(100)->get();
 
         $i = 0;
         foreach ($datas as $data) {
@@ -268,12 +268,25 @@ class Genetika
                     }
                 }
 
-                if ($jamPelajaran == 3 || $jamPelajaran == 2 || $jamPelajaran == 1) {
+                if ($jamPelajaran == 3) {
+                    if (
+                        ($jam_a == ($jumat_0 - 3)) ||
+                        ($jam_a == ($jumat_0 - 2)) ||
+                        ($jam_a == ($jumat_0 - 1)) ||
+                        ($jam_a == ($jumat_1 - 1)) ||
+                        ($jam_a == ($jumat_2 - 1))
+                    ) {
+                        // dd('sini');
+                        $penalty += 1;
+                    }
+                }
+                if ($jamPelajaran == 1) {
                     if (
                         ($jam_a == ($jumat_0 + 1)) ||
                         ($jam_a == ($jumat_1 + 1)) ||
                         ($jam_a == ($jumat_2 + 1))
                     ) {
+                        // dd('sini');
                         $penalty += 1;
                     }
                 }
