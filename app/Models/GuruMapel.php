@@ -27,6 +27,11 @@ class GuruMapel extends Model
         return $this->belongsTo(Mapel::class, 'mapel_id'); // Asumsi 'mapel_id' adalah nama foreign key di tabel pivot
     }
 
+    public function kelas()
+    {
+        return $this->belongsTo(Kelas::class,'kelas_id');
+    }
+
     public function jadwals()
     {
         return $this->hasMany(Jadwal::class);
