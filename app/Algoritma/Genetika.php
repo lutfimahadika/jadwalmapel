@@ -164,9 +164,9 @@ class Genetika
                     $penalty += 1;
                 }
 
-                if ($jamPelajaran >= 5 || $jamPelajaran >= 3) {
+                if ($jamPelajaran == 3 || $jamPelajaran == 2) {
                     if (
-                        ($jam_a + 2 == $jam_b) &&
+                        (($jam_a) == ($jam_b - 1)) &&
                         ($hari_a == $hari_b) &&
                         ($kelas_a == $kelas_b)
                     ) {
@@ -174,7 +174,28 @@ class Genetika
                     }
                 }
 
-                if ($jamPelajaran >= 4 || $jamPelajaran >= 2) {
+                if ($jamPelajaran == 5 || $jamPelajaran == 4) {
+                    if (
+                        (($jam_a) == ($jam_b - 2)) &&
+                        ($hari_a == $hari_b) &&
+                        ($kelas_a == $kelas_b)
+                    ) {
+                        $penalty += 1;
+                    }
+                }
+
+
+                if ($jamPelajaran == 3) {
+                    if (
+                        (($jam_a + 2) == $jam_b) &&
+                        ($hari_a == $hari_b) &&
+                        ($kelas_a == $kelas_b)
+                    ) {
+                        $penalty += 1;
+                    }
+                }
+
+                if ($jamPelajaran == 2) {
                     if (
                         ($jam_a + 1 == $jam_b) &&
                         ($hari_a == $hari_b) &&
@@ -193,9 +214,9 @@ class Genetika
                     $penalty += 1;
                 }
 
-                if ($jamPelajaran >= 5 || $jamPelajaran >= 3) {
+                if ($jamPelajaran == 3 || $jamPelajaran == 2) {
                     if (
-                        ($jam_a + 2 == $jam_b) &&
+                        (($jam_a) == ($jam_b - 1)) &&
                         ($hari_a == $hari_b) &&
                         ($guru_a == $guru_b)
                     ) {
@@ -203,10 +224,31 @@ class Genetika
                     }
                 }
 
-                if ($jamPelajaran >= 4 || $jamPelajaran >= 2) {
+                if ($jamPelajaran == 5 || $jamPelajaran == 4) {
+                    if (
+                        (($jam_a) == ($jam_b - 2)) &&
+                        ($hari_a == $hari_b) &&
+                        ($guru_a == $guru_b)
+                    ) {
+                        $penalty += 1;
+                    }
+                }
+
+
+                if ( $jamPelajaran == 3) {
+                    if (
+                        (($jam_a + 2) == $jam_b) &&
+                        ($hari_a == $hari_b) &&
+                        ($guru_a == $guru_b)
+                    ) {
+                        $penalty += 1;
+                    }
+                }
+
+                if ($jamPelajaran == 2) {
                     if (
                         ($jam_a + 1 == $jam_b) &&
-                        ($hari_a + 1 == $hari_b) &&
+                        ($hari_a == $hari_b) &&
                         ($guru_a == $guru_b)
                     ) {
                         $penalty += 1;
