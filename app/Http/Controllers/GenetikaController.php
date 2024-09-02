@@ -59,10 +59,10 @@ class GenetikaController extends Controller
 
                         if ($guruMengajar->mapel->jp ==  5 || $guruMengajar->mapel->jp == 4) {
                             $jamMulai = Jam::where('id', $jadwal[$k][1] + 1)->first()->jam_awal;
-                            $jamSelesai = Jam::where('id', $jadwal[$k][1] + ($guruMengajar->mapel->jp - 3))->first()->jam_akhir;
+                            $jamSelesai = Jam::where('id', $jadwal[$k][1] + ($guruMengajar->mapel->jp - 1))->first()->jam_akhir;
                         } else {
                             $jamMulai = Jam::where('id', $jadwal[$k][1] + 1)->first()->jam_awal;
-                            $jamSelesai = Jam::where('id', $jadwal[$k][1] + ($guruMengajar->mapel->jp - 2))->first()->jam_akhir;
+                            $jamSelesai = Jam::where('id', $jadwal[$k][1] + ($guruMengajar->mapel->jp - 1))->first()->jam_akhir;
                         }
 
                         $insertJadwal = new Jadwal();
