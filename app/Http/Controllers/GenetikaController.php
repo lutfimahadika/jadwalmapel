@@ -85,6 +85,7 @@ class GenetikaController extends Controller
             }
         }
 
-        return back();
+        $executionTime = microtime(true) - $_SERVER["REQUEST_TIME_FLOAT"];
+        return back()->with('success', "Genetika algorithm executed successfully! Waktu eksekusi : $executionTime detik");
     }
 }

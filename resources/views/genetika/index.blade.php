@@ -27,6 +27,14 @@
                         <div class="card">
                             <div class="card-header">
                                 <h3 class="card-title">GENERATE JADWAL</h3>
+                                @if (session('success'))
+                                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                        {{ session('success') }}
+                                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                @endif
                             </div>
                             <!-- /.card-header -->
                             <div class="card-body table-responsive p-0">
