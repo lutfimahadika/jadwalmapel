@@ -14,7 +14,9 @@ class GenetikaController extends Controller
 {
     public function index()
     {
-        $data = Jadwal::with('pengampu.guru', 'hari', 'jam')->get();
+        $data = Jadwal::with('pengampu.guru', 'hari', 'jam')->whereHas('pengampu',function($q){
+            $q->orderBy('kelas_id');
+        })->orderBy('hari_id')->orderBy('jam_id')->get();
         return view('genetika.index', compact('data'));
     }
 
@@ -28,7 +30,7 @@ class GenetikaController extends Controller
             1000, // jumlah generasi
             1,
             5,
-            '5-6-7',
+            '4-5-6',
             6
         );
 
@@ -53,371 +55,23 @@ class GenetikaController extends Controller
 
                     for ($k = 0; $k < count($jadwal); $k++) {
                         //cek Jam
-                        $guruMengajar = GuruMapel::with('mapel','guru')->where('id', $jadwal[$k][0])->first();
+                        $guruMengajar = GuruMapel::with('mapel', 'guru')->where('id', $jadwal[$k][0])->first();
 
-                        if ($guruMengajar->mapel->jp == 4) {
-                            $cekKeyJam = array_search($jadwal[$k][1], $genetik->jam);
-                            if (array_key_exists($cekKeyJam + 2, $genetik->jam)) {
-                                $jamMulai = Jam::where('id', $jadwal[$k][1])->first()->jam_awal;
-                                $jamSelesai = Jam::where('id', $genetik->jam[$cekKeyJam + 1])->first()->jam_akhir;
-
-                                $jamMulai2 = Jam::where('id', $genetik->jam[$cekKeyJam + 1])->first()->jam_awal;
-                                $jamSelesai2 = Jam::where('id', $genetik->jam[$cekKeyJam + 2])->first()->jam_akhir;
-
-
-                                $cekKeyHari = array_search($jadwal[$k][2], $genetik->hari);
-                                $hari = Hari::where('id', $jadwal[$k][2])->first();
-                                if (array_key_exists($cekKeyHari + 1, $genetik->hari)) {
-                                    $hari = Hari::where('id', $genetik->hari[$cekKeyHari + 1])->first();
-                                    if ($hari->id == 5) {
-                                        if (in_array($cekKeyJam + 1,[5,6,7])) {
-                                            $jamMulai2 = Jam::where('id', ($cekKeyJam + 3))->first()->jam_awal;
-                                            $jamSelesai2 = Jam::where('id', ($cekKeyJam + 4))->first()->jam_akhir;
-                                        }
-                                    }
-                                    if ($hari->id == 1) {
-                                       if(($cekKeyJam + 1) == 1){
-                                           $jamMulai2 = Jam::where('id', ($cekKeyJam + 2))->first()->jam_awal;
-                                           $jamSelesai2 = Jam::where('id', ($cekKeyJam + 3))->first()->jam_akhir;
-                                       }
-                                    }
-
-
-                                }else{
-                                    $hari = Hari::where('id', $genetik->hari[$cekKeyHari  - 1])->first();
-                                    if ($hari->id == 5) {
-                                        if (in_array($cekKeyJam + 1,[5,6,7])) {
-                                            $jamMulai2 = Jam::where('id', ($cekKeyJam + 3))->first()->jam_awal;
-                                            $jamSelesai2 = Jam::where('id', ($cekKeyJam + 4))->first()->jam_akhir;
-                                        }
-                                    }
-                                }
-
-                                $insertJadwal = new Jadwal();
-                                $insertJadwal->pengampu_id = $jadwal[$k][0];
-                                $insertJadwal->jam_id = $jadwal[$k][1];
-                                $insertJadwal->hari_id = $jadwal[$k][2];
-                                $insertJadwal->waktu_mulai = $jamMulai;
-                                $insertJadwal->waktu_selesai = $jamSelesai;
-                                $insertJadwal->save();
-
-                                $insertJadwal2 = new Jadwal();
-                                $insertJadwal2->pengampu_id = $jadwal[$k][0];
-                                $insertJadwal2->jam_id = $jadwal[$k][1];
-                                $insertJadwal2->hari_id = $hari->id;
-                                $insertJadwal2->waktu_mulai = $jamMulai2;
-                                $insertJadwal2->waktu_selesai = $jamSelesai2;
-                                $insertJadwal2->save();
-
-                            }else{
-
-                                $jamSelesai = Jam::where('id', $jadwal[$k][1])->first()->jam_akhir;
-                                $jamMulai = Jam::where('id', $genetik->jam[$cekKeyJam - 1])->first()->jam_awal;
-
-                                $jamMulai2 = Jam::where('id', $genetik->jam[$cekKeyJam - 2])->first()->jam_awal;
-                                $jamSelesai2 = Jam::where('id', $genetik->jam[$cekKeyJam - 1])->first()->jam_akhir;
-
-                                $cekKeyHari = array_search($jadwal[$k][2], $genetik->hari);
-                                $hari = Hari::where('id', $jadwal[$k][2])->first();
-                                if (array_key_exists($cekKeyHari + 1, $genetik->hari)) {
-                                    $hari = Hari::where('id', $genetik->hari[$cekKeyHari + 1])->first();
-                                    if ($hari->id == 5) {
-                                        if (in_array($cekKeyJam + 1,[5,6,7])) {
-                                            $jamMulai2 = Jam::where('id', $genetik->jam[$cekKeyJam - 3])->first()->jam_awal;
-                                            $jamSelesai2 = Jam::where('id', $genetik->jam[$cekKeyJam - 2])->first()->jam_akhir;
-                                        }
-                                    }
-                                }else{
-                                    $hari = Hari::where('id', $genetik->hari[$cekKeyHari  - 2])->first();
-                                    if ($hari->id == 5) {
-                                        if (in_array($cekKeyJam + 1,[5,6,7])) {
-                                            $jamMulai2 = Jam::where('id', $genetik->jam[$cekKeyJam - 3])->first()->jam_awal;
-                                            $jamSelesai2 = Jam::where('id', $genetik->jam[$cekKeyJam - 2])->first()->jam_akhir;
-                                        }
-                                    }
-
-                                    if ($hari->id == 1) {
-                                        if(($cekKeyJam + 1) == 1){
-                                            $jamMulai2 = Jam::where('id', ($cekKeyJam - 3))->first()->jam_awal;
-                                            $jamSelesai2 = Jam::where('id', ($cekKeyJam - 2))->first()->jam_akhir;
-                                        }
-                                     }
-                                }
-
-                                $insertJadwal = new Jadwal();
-                                $insertJadwal->pengampu_id = $jadwal[$k][0];
-                                $insertJadwal->jam_id = $jadwal[$k][1];
-                                $insertJadwal->hari_id = $jadwal[$k][2];
-                                $insertJadwal->waktu_mulai = $jamMulai;
-                                $insertJadwal->waktu_selesai = $jamSelesai;
-                                $insertJadwal->save();
-
-
-                                $insertJadwal2 = new Jadwal();
-                                $insertJadwal2->pengampu_id = $jadwal[$k][0];
-                                $insertJadwal2->jam_id = $jadwal[$k][1];
-                                $insertJadwal2->hari_id = $hari->id;
-                                $insertJadwal2->waktu_mulai = $jamMulai2;
-                                $insertJadwal2->waktu_selesai = $jamSelesai2;
-                                $insertJadwal2->save();
-                            }
-
-                        }elseif ($guruMengajar->mapel->jp == 3) {
-                            $cekKeyJam = array_search($jadwal[$k][1], $genetik->jam);
-                            if (array_key_exists($cekKeyJam + 2, $genetik->jam)) {
-                                $jamMulai = Jam::where('id', $jadwal[$k][1])->first()->jam_awal;
-                                $jamSelesai = Jam::where('id', $genetik->jam[$cekKeyJam + 2])->first()->jam_akhir;
-
-                                $cekKeyHari = array_search($jadwal[$k][2], $genetik->hari);
-                                $hari = Hari::where('id', $jadwal[$k][2])->first();
-                                if (array_key_exists($cekKeyHari + 1, $genetik->hari)) {
-                                    $hari = Hari::where('id', $genetik->hari[$cekKeyHari + 1])->first();
-                                    if ($hari->id == 5) {
-                                        if (in_array($cekKeyJam + 1,[5,6,7])) {
-                                            $jamMulai2 = Jam::where('id', ($cekKeyJam + 3))->first()->jam_awal;
-                                            $jamSelesai2 = Jam::where('id', ($cekKeyJam + 4))->first()->jam_akhir;
-                                        }
-                                    }
-
-                                }else{
-                                    $hari = Hari::where('id', $genetik->hari[$cekKeyHari  - 1])->first();
-                                    if ($hari->id == 5) {
-                                        if (in_array($cekKeyJam + 1,[5,6,7])) {
-                                            $jamMulai2 = Jam::where('id', ($cekKeyJam + 3))->first()->jam_awal;
-                                            $jamSelesai2 = Jam::where('id', ($cekKeyJam + 4))->first()->jam_akhir;
-                                        }
-                                    }
-                                }
-
-                                $insertJadwal = new Jadwal();
-                                $insertJadwal->pengampu_id = $jadwal[$k][0];
-                                $insertJadwal->jam_id = $jadwal[$k][1];
-                                $insertJadwal->hari_id = $jadwal[$k][2];
-                                $insertJadwal->waktu_mulai = $jamMulai;
-                                $insertJadwal->waktu_selesai = $jamSelesai;
-                                $insertJadwal->save();
-
-                            }else{
-                                $jamSelesai = Jam::where('id', $jadwal[$k][1])->first()->jam_akhir;
-                                $jamMulai = Jam::where('id', $genetik->jam[$cekKeyJam - 2])->first()->jam_awal;
-
-                                $cekKeyHari = array_search($jadwal[$k][2], $genetik->hari);
-                                $hari = Hari::where('id', $jadwal[$k][2])->first();
-                                if (array_key_exists($cekKeyHari + 1, $genetik->hari)) {
-                                    $hari = Hari::where('id', $genetik->hari[$cekKeyHari + 1])->first();
-                                    if ($hari->id == 5) {
-                                        if (in_array($cekKeyJam + 1,[5,6,7])) {
-                                            $jamMulai2 = Jam::where('id', ($cekKeyJam + 3))->first()->jam_awal;
-                                            $jamSelesai2 = Jam::where('id', ($cekKeyJam + 4))->first()->jam_akhir;
-                                        }
-                                    }
-
-                                }else{
-                                    $hari = Hari::where('id', $genetik->hari[$cekKeyHari  - 1])->first();
-                                    if ($hari->id == 5) {
-                                        if (in_array($cekKeyJam + 1,[5,6,7])) {
-                                            $jamMulai2 = Jam::where('id', ($cekKeyJam + 3))->first()->jam_awal;
-                                            $jamSelesai2 = Jam::where('id', ($cekKeyJam + 4))->first()->jam_akhir;
-                                        }
-                                    }
-                                }
-
-                                $insertJadwal = new Jadwal();
-                                $insertJadwal->pengampu_id = $jadwal[$k][0];
-                                $insertJadwal->jam_id = $jadwal[$k][1];
-                                $insertJadwal->hari_id = $jadwal[$k][2];
-                                $insertJadwal->waktu_mulai = $jamMulai;
-                                $insertJadwal->waktu_selesai = $jamSelesai;
-                                $insertJadwal->save();
-                            }
-
-                        }elseif ($guruMengajar->mapel->jp == 2) {
-                            $cekKeyJam = array_search($jadwal[$k][1], $genetik->jam);
-                            if (array_key_exists($cekKeyJam + 2, $genetik->jam)) {
-                                $jamMulai = Jam::where('id', $jadwal[$k][1])->first()->jam_awal;
-                                $jamSelesai = Jam::where('id', $genetik->jam[$cekKeyJam + 1])->first()->jam_akhir;
-
-                                $cekKeyHari = array_search($jadwal[$k][2], $genetik->hari);
-                                $hari = Hari::where('id', $jadwal[$k][2])->first();
-                                if (array_key_exists($cekKeyHari + 1, $genetik->hari)) {
-                                    $hari = Hari::where('id', $genetik->hari[$cekKeyHari + 1])->first();
-                                    if ($hari->id == 5) {
-                                        if (in_array($cekKeyJam + 1,[5,6,7])) {
-                                            $jamMulai2 = Jam::where('id', ($cekKeyJam + 3))->first()->jam_awal;
-                                            $jamSelesai2 = Jam::where('id', ($cekKeyJam + 4))->first()->jam_akhir;
-                                        }
-                                    }
-
-                                }else{
-                                    $hari = Hari::where('id', $genetik->hari[$cekKeyHari  - 1])->first();
-                                    if ($hari->id == 5) {
-                                        if (in_array($cekKeyJam + 1,[5,6,7])) {
-                                            $jamMulai2 = Jam::where('id', ($cekKeyJam + 3))->first()->jam_awal;
-                                            $jamSelesai2 = Jam::where('id', ($cekKeyJam + 4))->first()->jam_akhir;
-                                        }
-                                    }
-                                }
-
-                                $insertJadwal = new Jadwal();
-                                $insertJadwal->pengampu_id = $jadwal[$k][0];
-                                $insertJadwal->jam_id = $jadwal[$k][1];
-                                $insertJadwal->hari_id = $jadwal[$k][2];
-                                $insertJadwal->waktu_mulai =  $jamMulai;
-                                $insertJadwal->waktu_selesai =  $jamSelesai;
-                                $insertJadwal->save();
-                            }else{
-                                $jamSelesai = Jam::where('id', $jadwal[$k][1])->first()->jam_akhir;
-                                $jamMulai = Jam::where('id', $genetik->jam[$cekKeyJam - 1])->first()->jam_awal;
-
-                                $cekKeyHari = array_search($jadwal[$k][2], $genetik->hari);
-                                $hari = Hari::where('id', $jadwal[$k][2])->first();
-                                if (array_key_exists($cekKeyHari + 1, $genetik->hari)) {
-                                    $hari = Hari::where('id', $genetik->hari[$cekKeyHari + 1])->first();
-                                    if ($hari->id == 5) {
-                                        if (in_array($cekKeyJam + 1,[5,6,7])) {
-                                            $jamMulai2 = Jam::where('id', ($cekKeyJam + 3))->first()->jam_awal;
-                                            $jamSelesai2 = Jam::where('id', ($cekKeyJam + 4))->first()->jam_akhir;
-                                        }
-                                    }
-
-                                }else{
-                                    $hari = Hari::where('id', $genetik->hari[$cekKeyHari  - 1])->first();
-                                    if ($hari->id == 5) {
-                                        if (in_array($cekKeyJam + 1,[5,6,7])) {
-                                            $jamMulai2 = Jam::where('id', ($cekKeyJam + 3))->first()->jam_awal;
-                                            $jamSelesai2 = Jam::where('id', ($cekKeyJam + 4))->first()->jam_akhir;
-                                        }
-                                    }
-                                }
-
-                                $insertJadwal = new Jadwal();
-                                $insertJadwal->pengampu_id = $jadwal[$k][0];
-                                $insertJadwal->jam_id = $jadwal[$k][1];
-                                $insertJadwal->hari_id = $jadwal[$k][2];
-                                $insertJadwal->waktu_mulai =  $jamMulai;
-                                $insertJadwal->waktu_selesai =  $jamSelesai;
-                                $insertJadwal->save();
-                            }
-                        }elseif ($guruMengajar->mapel->jp == 1) {
+                        if ($guruMengajar->mapel->jp ==  5 || $guruMengajar->mapel->jp == 4) {
                             $jamMulai = Jam::where('id', $jadwal[$k][1])->first()->jam_awal;
-                            $jamSelesai = Jam::where('id', $jadwal[$k][1])->first()->jam_akhir;
-
-                            $insertJadwal = new Jadwal();
-                            $insertJadwal->pengampu_id = $jadwal[$k][0];
-                            $insertJadwal->jam_id = $jadwal[$k][1];
-                            $insertJadwal->hari_id = $jadwal[$k][2];
-                            $insertJadwal->waktu_mulai =  $jamMulai;
-                            $insertJadwal->waktu_selesai =  $jamSelesai;
-                            $insertJadwal->save();
-
-                        }elseif($guruMengajar->mapel->jp == 5){
-                            $cekKeyJam = array_search($jadwal[$k][1], $genetik->jam);
-                            if (array_key_exists($cekKeyJam + 2, $genetik->jam)) {
-                                $jamMulai = Jam::where('id', $jadwal[$k][1])->first()->jam_awal;
-                                $jamSelesai = Jam::where('id', $genetik->jam[$cekKeyJam + 2])->first()->jam_akhir;
-
-                                $jamMulai2 = Jam::where('id', $genetik->jam[$cekKeyJam + 1])->first()->jam_awal;
-                                $jamSelesai2 = Jam::where('id', $genetik->jam[$cekKeyJam + 2])->first()->jam_akhir;
-
-                                $cekKeyHari = array_search($jadwal[$k][2], $genetik->hari);
-                                $hari = Hari::where('id', $jadwal[$k][2])->first();
-                                if (array_key_exists($cekKeyHari + 1, $genetik->hari)) {
-                                    $hari = Hari::where('id', $genetik->hari[$cekKeyHari + 1])->first();
-                                    if ($hari->id == 5) {
-                                        if (in_array($cekKeyJam + 1,[5,6,7])) {
-                                            $jamMulai2 = Jam::where('id', ($cekKeyJam + 3))->first()->jam_awal;
-                                            $jamSelesai2 = Jam::where('id', ($cekKeyJam + 4))->first()->jam_akhir;
-                                        }
-                                    }
-
-                                    if ($hari->id == 1) {
-                                        if(($cekKeyJam + 1) == 1){
-                                            $jamMulai2 = Jam::where('id', ($cekKeyJam + 2))->first()->jam_awal;
-                                            $jamSelesai2 = Jam::where('id', ($cekKeyJam + 3))->first()->jam_akhir;
-                                        }
-                                     }
-
-                                }else{
-                                    $hari = Hari::where('id', $genetik->hari[$cekKeyHari  - 1])->first();
-                                    if ($hari->id == 5) {
-                                        if (in_array($cekKeyJam + 1,[5,6,7])) {
-                                            $jamMulai2 = Jam::where('id', ($cekKeyJam + 3))->first()->jam_awal;
-                                            $jamSelesai2 = Jam::where('id', ($cekKeyJam + 4))->first()->jam_akhir;
-                                        }
-                                    }
-
-                                    if ($hari->id == 1) {
-                                        if(($cekKeyJam + 1) == 1){
-                                            $jamMulai2 = Jam::where('id', ($cekKeyJam + 2))->first()->jam_awal;
-                                            $jamSelesai2 = Jam::where('id', ($cekKeyJam + 3))->first()->jam_akhir;
-                                        }
-                                     }
-                                }
-
-                                $insertJadwal = new Jadwal();
-                                $insertJadwal->pengampu_id = $jadwal[$k][0];
-                                $insertJadwal->jam_id = $jadwal[$k][1];
-                                $insertJadwal->hari_id = $jadwal[$k][2];
-                                $insertJadwal->waktu_mulai =  $jamMulai;
-                                $insertJadwal->waktu_selesai =  $jamSelesai;
-                                $insertJadwal->save();
-
-                                $insertJadwal2 = new Jadwal();
-                                $insertJadwal2->pengampu_id = $jadwal[$k][0];
-                                $insertJadwal2->jam_id = $jadwal[$k][1];
-                                $insertJadwal2->hari_id = $hari->id;
-                                $insertJadwal2->waktu_mulai =  $jamMulai2;
-                                $insertJadwal2->waktu_selesai =  $jamSelesai2;
-                                $insertJadwal2->save();
-
-                            }else{
-                                $jamSelesai = Jam::where('id', $jadwal[$k][1])->first()->jam_akhir;
-                                $jamMulai = Jam::where('id', $genetik->jam[$cekKeyJam - 2])->first()->jam_awal;
-
-
-                                $jamMulai2 = Jam::where('id', $genetik->jam[$cekKeyJam - 1] - 1)->first()->jam_awal;
-                                $jamSelesai2 = Jam::where('id', $genetik->jam[$cekKeyJam - 1])->first()->jam_akhir;
-
-                                $cekKeyHari = array_search($jadwal[$k][2], $genetik->hari);
-                                $hari = Hari::where('id', $jadwal[$k][2])->first();
-                                if (array_key_exists($cekKeyHari + 1, $genetik->hari)) {
-                                    $hari = Hari::where('id', $genetik->hari[$cekKeyHari + 1])->first();
-                                    if ($hari->id == 5) {
-                                        if (in_array($cekKeyJam + 1,[5,6,7])) {
-                                            $jamMulai2 = Jam::where('id', ($cekKeyJam + 3))->first()->jam_awal;
-                                            $jamSelesai2 = Jam::where('id', ($cekKeyJam + 4))->first()->jam_akhir;
-                                        }
-                                    }
-
-                                }else{
-                                    $hari = Hari::where('id', $genetik->hari[$cekKeyHari  - 1])->first();
-                                    if ($hari->id == 5) {
-                                        if (in_array($cekKeyJam + 1,[5,6,7])) {
-                                            $jamMulai2 = Jam::where('id', ($cekKeyJam + 3))->first()->jam_awal;
-                                            $jamSelesai2 = Jam::where('id', ($cekKeyJam + 4))->first()->jam_akhir;
-                                        }
-                                    }
-                                }
-
-
-                                $insertJadwal = new Jadwal();
-                                $insertJadwal->pengampu_id = $jadwal[$k][0];
-                                $insertJadwal->jam_id = $jadwal[$k][1];
-                                $insertJadwal->hari_id = $jadwal[$k][2];
-                                $insertJadwal->waktu_mulai =  $jamMulai;
-                                $insertJadwal->waktu_selesai =  $jamSelesai;
-                                $insertJadwal->save();
-
-                                $insertJadwal2 = new Jadwal();
-                                $insertJadwal2->pengampu_id = $jadwal[$k][0];
-                                $insertJadwal2->jam_id = $jadwal[$k][1];
-                                $insertJadwal2->hari_id = $hari->id;
-                                $insertJadwal2->waktu_mulai =  $jamMulai2;
-                                $insertJadwal2->waktu_selesai =  $jamSelesai2;
-                                $insertJadwal2->save();
-                            }
+                            $jamSelesai = Jam::where('id', $jadwal[$k][1] + ($guruMengajar->mapel->jp - 2))->first()->jam_akhir;
+                        } else {
+                            $jamMulai = Jam::where('id', $jadwal[$k][1])->first()->jam_awal;
+                            $jamSelesai = Jam::where('id', $jadwal[$k][1] + ($guruMengajar->mapel->jp - 1))->first()->jam_akhir;
                         }
 
+                        $insertJadwal = new Jadwal();
+                        $insertJadwal->pengampu_id = $jadwal[$k][0];
+                        $insertJadwal->jam_id = $jadwal[$k][1];
+                        $insertJadwal->hari_id = $jadwal[$k][2];
+                        $insertJadwal->waktu_mulai =  $jamMulai;
+                        $insertJadwal->waktu_selesai =  $jamSelesai;
+                        $insertJadwal->save();
                     }
 
                     $found = true;
@@ -433,6 +87,5 @@ class GenetikaController extends Controller
         }
 
         return back();
-
     }
 }
