@@ -258,19 +258,6 @@ class Genetika
 
             if (($hari_a + 1) == $hari_jumat) {
 
-                if ($jamPelajaran == 1) {
-                    if (
-
-                        ($jam_a == ($jumat_0 - 1)) ||
-                        ($jam_a == ($jumat_1 - 1)) ||
-                        ($jam_a == ($jumat_2 - 1))
-
-                    ) {
-
-                        $penalty += 1;
-                    }
-                }
-
                 if ($jamPelajaran == 4 || $jamPelajaran == 5) {
                     if (
                         ($jam_a == ($jumat_0 + 2)) ||
@@ -281,7 +268,7 @@ class Genetika
                     }
                 }
 
-                if ($jamPelajaran == 3 || $jamPelajaran == 2) {
+                if ($jamPelajaran == 3 || $jamPelajaran == 2 || $jamPelajaran == 1) {
                     if (
                         ($jam_a == ($jumat_0 + 1)) ||
                         ($jam_a == ($jumat_1 + 1)) ||
