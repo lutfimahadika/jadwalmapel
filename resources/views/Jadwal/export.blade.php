@@ -103,6 +103,9 @@
                 <tr style="border: 1px solid black;">
                     <td></td>
                     <td>09.15 - 09.30</td>
+                    <td colspan="12" style="background-color: rgb(98, 98, 255); color: white; font-style: italic;">Istirahat</td>
+                    <td colspan="12" style="background-color: rgb(98, 98, 255); color: white; font-style: italic;">Istirahat</td>
+                    <td colspan="12" style="background-color: rgb(98, 98, 255); color: white; font-style: italic;">Istirahat</td>
                 </tr>
                 <tr style="border: 1px solid black;">
                     <td>4</td>
@@ -119,9 +122,9 @@
                 <tr style="border: 1px solid black;">
                     <td></td>
                     <td>11.45 - 12.15</td>
-                    <td colspan="12" style="background-color: rgb(98, 98, 255); color: white; font-style: italic;">Istirahat</td>
-                    <td colspan="12" style="background-color: rgb(98, 98, 255); color: white; font-style: italic;">Istirahat</td>
-                    <td colspan="12" style="background-color: rgb(98, 98, 255); color: white; font-style: italic;">Istirahat</td>
+                    <td colspan="12" style="background-color: skyblue; color: white; font-style: italic;">SHALAT DZUHUR BERJAMAAH</td>
+                    <td colspan="12" style="background-color: skyblue; color: white; font-style: italic;">SHALAT DZUHUR BERJAMAAH</td>
+                    <td colspan="12" style="background-color: skyblue; color: white; font-style: italic;">SHALAT DZUHUR BERJAMAAH</td>
                 </tr>
                 <tr style="border: 1px solid black;">
                     <td>7</td>
@@ -142,10 +145,16 @@
                 <tr style="border: 1px solid black;">
                     <td></td>
                     <td>15.15 - 15.45</td>
+                    <td colspan="12" style="background-color: rgb(98, 98, 255); color: white; font-style: italic;">IBADAH SHOLAT ASHAR</td>
+                    <td colspan="12" style="background-color: rgb(98, 98, 255); color: white; font-style: italic;">IBADAH SHOLAT ASHAR</td>
+                    <td colspan="12" style="background-color: rgb(98, 98, 255); color: white; font-style: italic;">IBADAH SHOLAT ASHAR</td>
                 </tr>
                 <tr style="border: 1px solid black;">
                     <td></td>
                     <td>15.45 - 16.30</td>
+                    <td colspan="12" style="background-color: rgb(98, 213, 255); color: white; font-style: italic;">EKSTRAKURIKULER PILIHAN SISWA</td>
+                    <td colspan="12" style="background-color: rgb(98, 213, 255); color: white; font-style: italic;">EKSTRAKURIKULER PILIHAN SISWA</td>
+                    <td colspan="12" style="background-color: rgb(98, 213, 255); color: white; font-style: italic;">EKSTRAKURIKULER PILIHAN SISWA</td>
                 </tr>
             </tbody>
         </table>
