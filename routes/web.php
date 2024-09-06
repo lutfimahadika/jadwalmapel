@@ -105,5 +105,6 @@ Route::group(['prefix' => 'admin','middleware' => ['auth'], 'as' => 'admin.'] , 
 
     //export Jadwal
     Route::get('/jadwal/export',[JadwalController::class,'export'])->name('jadwal.export');
+    Route::view('template-jadwal','jadwal.export')->name('jadwal.template');
 });
 
