@@ -124,37 +124,37 @@
                     <td>{{dataJadwal(2,1,2)}}</td>
                     <td>{{dataJadwal(3,1,2)}}</td>
                     <td>{{dataJadwal(4,1,2)}}</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
+                    <td>{{dataJadwal(5,1,2)}}</td>
+                    <td>{{dataJadwal(6,1,2)}}</td>
+                    <td>{{dataJadwal(7,1,2)}}</td>
+                    <td>{{dataJadwal(8,1,2)}}</td>
+                    <td>{{dataJadwal(9,1,2)}}</td>
+                    <td>{{dataJadwal(10,1,2)}}</td>
+                    <td>{{dataJadwal(11,1,2)}}</td>
+                    <td>{{dataJadwal(12,1,2)}}</td>
+                    <td>{{dataJadwal(13,1,2)}}</td>
+                    <td>{{dataJadwal(14,1,2)}}</td>
+                    <td>{{dataJadwal(15,1,2)}}</td>
+                    <td>{{dataJadwal(16,1,2)}}</td>
+                    <td>{{dataJadwal(17,1,2)}}</td>
+                    <td>{{dataJadwal(18,1,2)}}</td>
+                    <td>{{dataJadwal(19,1,2)}}</td>
+                    <td>{{dataJadwal(20,1,2)}}</td>
+                    <td>{{dataJadwal(21,1,2)}}</td>
+                    <td>{{dataJadwal(22,1,2)}}</td>
+                    <td>{{dataJadwal(23,1,2)}}</td>
+                    <td>{{dataJadwal(24,1,2)}}</td>
+                    <td>{{dataJadwal(25,1,2)}}</td>
+                    <td>{{dataJadwal(26,1,2)}}</td>
+                    <td>{{dataJadwal(27,1,2)}}</td>
+                    <td>{{dataJadwal(29,1,2)}}</td>
+                    <td>{{dataJadwal(30,1,2)}}</td>
+                    <td>{{dataJadwal(31,1,2)}}</td>
+                    <td>{{dataJadwal(32,1,2)}}</td>
+                    <td>{{dataJadwal(33,1,2)}}</td>
+                    <td>{{dataJadwal(34,1,2)}}</td>
+                    <td>{{dataJadwal(35,1,2)}}</td>
+                    <td>{{dataJadwal(36,1,2)}}</td>
                     <td></td>
                 </tr>
                 <tr style="border: 1px solid black;">
