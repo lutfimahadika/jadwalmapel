@@ -103,5 +103,7 @@ Route::group(['prefix' => 'admin','middleware' => ['auth'], 'as' => 'admin.'] , 
 
     Route::get('/jadwal/generate',[GenetikaController::class,'generate'])->name('jadwal.generate');
 
+    //export Jadwal
+    Route::get('/jadwal/export',[JadwalController::class,'export'])->name('jadwal.export');
 });
 

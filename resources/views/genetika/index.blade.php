@@ -40,6 +40,8 @@
                             <div class="card-body table-responsive p-0">
                                 <a href="{{ route('admin.jadwal.generate') }}" class="btn btn-primary btn-lg"
                                     style="margin:15px;">Generate Jadwal</a>
+                                <a href="{{route('admin.jadwal.export')}}" class="btn btn-success btn-lg"
+                                    style="margin:15px;">Export Jadwal</a>
                                 <table class="table table-hover text-nowrap datatable">
                                     <thead>
                                         <tr>
