@@ -3,7 +3,20 @@
 
 <head>
     <title>Jadwal Pelajaran</title>
+    {{-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/paper-css/0.4.1/paper.css"> --}}
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <style>
+        @page {
+            size: legal
+        }
+
+        table{
+            font-size:8px;
+        }
+
         table,
         th,
         td {
@@ -13,7 +26,12 @@
 
         th,
         td {
-           padding: 5px
+            padding: 2px
+        }
+
+        table {
+            width: 50%;
+            border-spacing: 0;
         }
     </style>
 </head>
@@ -25,7 +43,7 @@
         <h5>TAHUN PELAJARAN 2023/2024</h5>
     </div>
     <hr>
-    <div style="text-align: center;">
+    <div style="text-align: center;margin:0 auto;">
         <table style="border: 1px solid black; padding: 0 10px; margin: 0 auto;">
             <thead>
                 <tr style="border: 1px solid black;">
@@ -89,73 +107,412 @@
                     <td rowspan="14" style="writing-mode: vertical-rl; text-orientation: upright;">Senin</td>
                     <td>1</td>
                     <td>06.45 - 07.45</td>
-                    <td colspan="12" style="background-color: skyblue; color: white; font-style: italic;">PPK/UPACARA BENDERA</td>
-                    <td colspan="12" style="background-color: skyblue; color: white; font-style: italic;">PPK/UPACARA BENDERA</td>
-                    <td colspan="12" style="background-color: skyblue; color: white; font-style: italic;">PPK/UPACARA BENDERA</td>
+                    <td colspan="12" style="background-color: skyblue; color: white; font-style: italic;">PPK/UPACARA
+                        BENDERA</td>
+                    <td colspan="12" style="background-color: skyblue; color: white; font-style: italic;">PPK/UPACARA
+                        BENDERA</td>
+                    <td colspan="12" style="background-color: skyblue; color: white; font-style: italic;">PPK/UPACARA
+                        BENDERA</td>
                 </tr>
                 <tr style="border: 1px solid black;">
                     <td>2</td>
                     <td>07.45 - 08.30</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
                 </tr>
                 <tr style="border: 1px solid black;">
                     <td>3</td>
                     <td>08.30 - 09.15</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
                 </tr>
                 <tr style="border: 1px solid black;">
                     <td></td>
                     <td>09.15 - 09.30</td>
-                    <td colspan="12" style="background-color: rgb(98, 98, 255); color: white; font-style: italic;">Istirahat</td>
-                    <td colspan="12" style="background-color: rgb(98, 98, 255); color: white; font-style: italic;">Istirahat</td>
-                    <td colspan="12" style="background-color: rgb(98, 98, 255); color: white; font-style: italic;">Istirahat</td>
+                    <td colspan="12" style="background-color: rgb(98, 98, 255); color: white; font-style: italic;">
+                        Istirahat</td>
+                    <td colspan="12" style="background-color: rgb(98, 98, 255); color: white; font-style: italic;">
+                        Istirahat</td>
+                    <td colspan="12" style="background-color: rgb(98, 98, 255); color: white; font-style: italic;">
+                        Istirahat</td>
                 </tr>
                 <tr style="border: 1px solid black;">
                     <td>4</td>
                     <td>09.30 - 10.15</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
                 </tr>
                 <tr style="border: 1px solid black;">
                     <td>5</td>
                     <td>10.15 - 11.00</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
                 </tr>
                 <tr style="border: 1px solid black;">
                     <td>6</td>
                     <td>11.00 - 11.45</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
                 </tr>
                 <tr style="border: 1px solid black;">
                     <td></td>
                     <td>11.45 - 12.15</td>
-                    <td colspan="12" style="background-color: skyblue; color: white; font-style: italic;">SHALAT DZUHUR BERJAMAAH</td>
-                    <td colspan="12" style="background-color: skyblue; color: white; font-style: italic;">SHALAT DZUHUR BERJAMAAH</td>
-                    <td colspan="12" style="background-color: skyblue; color: white; font-style: italic;">SHALAT DZUHUR BERJAMAAH</td>
+                    <td colspan="12" style="background-color: skyblue; color: white; font-style: italic;">SHALAT
+                        DZUHUR BERJAMAAH</td>
+                    <td colspan="12" style="background-color: skyblue; color: white; font-style: italic;">SHALAT
+                        DZUHUR BERJAMAAH</td>
+                    <td colspan="12" style="background-color: skyblue; color: white; font-style: italic;">SHALAT
+                        DZUHUR BERJAMAAH</td>
                 </tr>
                 <tr style="border: 1px solid black;">
                     <td>7</td>
                     <td>12.15 - 13.00</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
                 </tr>
                 <tr style="border: 1px solid black;">
                     <td>8</td>
                     <td>13.00 - 13.45</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
                 </tr>
                 <tr style="border: 1px solid black;">
                     <td>9</td>
                     <td>13.45 - 14.30</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
                 </tr>
                 <tr style="border: 1px solid black;">
                     <td>10</td>
                     <td>14.30 - 15.15</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
                 </tr>
                 <tr style="border: 1px solid black;">
                     <td></td>
                     <td>15.15 - 15.45</td>
-                    <td colspan="12" style="background-color: rgb(98, 98, 255); color: white; font-style: italic;">IBADAH SHOLAT ASHAR</td>
-                    <td colspan="12" style="background-color: rgb(98, 98, 255); color: white; font-style: italic;">IBADAH SHOLAT ASHAR</td>
-                    <td colspan="12" style="background-color: rgb(98, 98, 255); color: white; font-style: italic;">IBADAH SHOLAT ASHAR</td>
+                    <td colspan="12" style="background-color: rgb(98, 98, 255); color: white; font-style: italic;">
+                        IBADAH SHOLAT ASHAR</td>
+                    <td colspan="12" style="background-color: rgb(98, 98, 255); color: white; font-style: italic;">
+                        IBADAH SHOLAT ASHAR</td>
+                    <td colspan="12" style="background-color: rgb(98, 98, 255); color: white; font-style: italic;">
+                        IBADAH SHOLAT ASHAR</td>
                 </tr>
                 <tr style="border: 1px solid black;">
                     <td></td>
                     <td>15.45 - 16.30</td>
-                    <td colspan="12" style="background-color: rgb(98, 213, 255); color: white; font-style: italic;">EKSTRAKURIKULER PILIHAN SISWA</td>
-                    <td colspan="12" style="background-color: rgb(98, 213, 255); color: white; font-style: italic;">EKSTRAKURIKULER PILIHAN SISWA</td>
-                    <td colspan="12" style="background-color: rgb(98, 213, 255); color: white; font-style: italic;">EKSTRAKURIKULER PILIHAN SISWA</td>
+                    <td colspan="12" style="background-color: rgb(98, 213, 255); color: white; font-style: italic;">
+                        EKSTRAKURIKULER PILIHAN SISWA</td>
+                    <td colspan="12" style="background-color: rgb(98, 213, 255); color: white; font-style: italic;">
+                        EKSTRAKURIKULER PILIHAN SISWA</td>
+                    <td colspan="12" style="background-color: rgb(98, 213, 255); color: white; font-style: italic;">
+                        EKSTRAKURIKULER PILIHAN SISWA</td>
                 </tr>
 
                 {{-- Hari Selasa --}}
@@ -164,73 +521,412 @@
                     <td rowspan="14" style="writing-mode: vertical-rl; text-orientation: upright;">Selasa</td>
                     <td>1</td>
                     <td>06.45 - 07.45</td>
-                    <td colspan="12" style="background-color: skyblue; color: white; font-style: italic;">PPK (Olah Hati, Rasa , Pikiran)</td>
-                    <td colspan="12" style="background-color: skyblue; color: white; font-style: italic;">PPK (Olah Hati, Rasa , Pikiran)</td>
-                    <td colspan="12" style="background-color: skyblue; color: white; font-style: italic;">PK (Olah Hati, Rasa , Pikiran)</td>
+                    <td colspan="12" style="background-color: skyblue; color: white; font-style: italic;">PPK (Olah
+                        Hati, Rasa , Pikiran)</td>
+                    <td colspan="12" style="background-color: skyblue; color: white; font-style: italic;">PPK (Olah
+                        Hati, Rasa , Pikiran)</td>
+                    <td colspan="12" style="background-color: skyblue; color: white; font-style: italic;">PK (Olah
+                        Hati, Rasa , Pikiran)</td>
                 </tr>
                 <tr style="border: 1px solid black;">
                     <td>2</td>
                     <td>07.45 - 08.30</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
                 </tr>
                 <tr style="border: 1px solid black;">
                     <td>3</td>
                     <td>08.30 - 09.15</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
                 </tr>
                 <tr style="border: 1px solid black;">
                     <td></td>
                     <td>09.15 - 09.30</td>
-                    <td colspan="12" style="background-color: rgb(98, 98, 255); color: white; font-style: italic;">Istirahat</td>
-                    <td colspan="12" style="background-color: rgb(98, 98, 255); color: white; font-style: italic;">Istirahat</td>
-                    <td colspan="12" style="background-color: rgb(98, 98, 255); color: white; font-style: italic;">Istirahat</td>
+                    <td colspan="12" style="background-color: rgb(98, 98, 255); color: white; font-style: italic;">
+                        Istirahat</td>
+                    <td colspan="12" style="background-color: rgb(98, 98, 255); color: white; font-style: italic;">
+                        Istirahat</td>
+                    <td colspan="12" style="background-color: rgb(98, 98, 255); color: white; font-style: italic;">
+                        Istirahat</td>
                 </tr>
                 <tr style="border: 1px solid black;">
                     <td>4</td>
                     <td>09.30 - 10.15</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
                 </tr>
                 <tr style="border: 1px solid black;">
                     <td>5</td>
                     <td>10.15 - 11.00</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
                 </tr>
                 <tr style="border: 1px solid black;">
                     <td>6</td>
                     <td>11.00 - 11.45</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
                 </tr>
                 <tr style="border: 1px solid black;">
                     <td></td>
                     <td>11.45 - 12.15</td>
-                    <td colspan="12" style="background-color: skyblue; color: white; font-style: italic;">SHALAT DZUHUR BERJAMAAH</td>
-                    <td colspan="12" style="background-color: skyblue; color: white; font-style: italic;">SHALAT DZUHUR BERJAMAAH</td>
-                    <td colspan="12" style="background-color: skyblue; color: white; font-style: italic;">SHALAT DZUHUR BERJAMAAH</td>
+                    <td colspan="12" style="background-color: skyblue; color: white; font-style: italic;">SHALAT
+                        DZUHUR BERJAMAAH</td>
+                    <td colspan="12" style="background-color: skyblue; color: white; font-style: italic;">SHALAT
+                        DZUHUR BERJAMAAH</td>
+                    <td colspan="12" style="background-color: skyblue; color: white; font-style: italic;">SHALAT
+                        DZUHUR BERJAMAAH</td>
                 </tr>
                 <tr style="border: 1px solid black;">
                     <td>7</td>
                     <td>12.15 - 13.00</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
                 </tr>
                 <tr style="border: 1px solid black;">
                     <td>8</td>
                     <td>13.00 - 13.45</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
                 </tr>
                 <tr style="border: 1px solid black;">
                     <td>9</td>
                     <td>13.45 - 14.30</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
                 </tr>
                 <tr style="border: 1px solid black;">
                     <td>10</td>
                     <td>14.30 - 15.15</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
                 </tr>
                 <tr style="border: 1px solid black;">
                     <td></td>
                     <td>15.15 - 15.45</td>
-                    <td colspan="12" style="background-color: rgb(98, 98, 255); color: white; font-style: italic;">IBADAH SHOLAT ASHAR</td>
-                    <td colspan="12" style="background-color: rgb(98, 98, 255); color: white; font-style: italic;">IBADAH SHOLAT ASHAR</td>
-                    <td colspan="12" style="background-color: rgb(98, 98, 255); color: white; font-style: italic;">IBADAH SHOLAT ASHAR</td>
+                    <td colspan="12" style="background-color: rgb(98, 98, 255); color: white; font-style: italic;">
+                        IBADAH SHOLAT ASHAR</td>
+                    <td colspan="12" style="background-color: rgb(98, 98, 255); color: white; font-style: italic;">
+                        IBADAH SHOLAT ASHAR</td>
+                    <td colspan="12" style="background-color: rgb(98, 98, 255); color: white; font-style: italic;">
+                        IBADAH SHOLAT ASHAR</td>
                 </tr>
                 <tr style="border: 1px solid black;">
                     <td></td>
                     <td>15.45 - 16.30</td>
-                    <td colspan="12" style="background-color: rgb(98, 213, 255); color: white; font-style: italic;">EKSTRAKURIKULER PILIHAN SISWA</td>
-                    <td colspan="12" style="background-color: rgb(98, 213, 255); color: white; font-style: italic;">EKSTRAKURIKULER PILIHAN SISWA</td>
-                    <td colspan="12" style="background-color: rgb(98, 213, 255); color: white; font-style: italic;">EKSTRAKURIKULER PILIHAN SISWA</td>
+                    <td colspan="12" style="background-color: rgb(98, 213, 255); color: white; font-style: italic;">
+                        EKSTRAKURIKULER PILIHAN SISWA</td>
+                    <td colspan="12" style="background-color: rgb(98, 213, 255); color: white; font-style: italic;">
+                        EKSTRAKURIKULER PILIHAN SISWA</td>
+                    <td colspan="12" style="background-color: rgb(98, 213, 255); color: white; font-style: italic;">
+                        EKSTRAKURIKULER PILIHAN SISWA</td>
                 </tr>
 
                 {{-- Hari Rabu --}}
@@ -239,73 +935,412 @@
                     <td rowspan="14" style="writing-mode: vertical-rl; text-orientation: upright;">Rabu</td>
                     <td>1</td>
                     <td>06.45 - 07.45</td>
-                    <td colspan="12" style="background-color: skyblue; color: white; font-style: italic;">PPK (Olah Hati, Rasa , Pikiran)</td>
-                    <td colspan="12" style="background-color: skyblue; color: white; font-style: italic;">PPK (Olah Hati, Rasa , Pikiran)</td>
-                    <td colspan="12" style="background-color: skyblue; color: white; font-style: italic;">PK (Olah Hati, Rasa , Pikiran)</td>
+                    <td colspan="12" style="background-color: skyblue; color: white; font-style: italic;">PPK (Olah
+                        Hati, Rasa , Pikiran)</td>
+                    <td colspan="12" style="background-color: skyblue; color: white; font-style: italic;">PPK (Olah
+                        Hati, Rasa , Pikiran)</td>
+                    <td colspan="12" style="background-color: skyblue; color: white; font-style: italic;">PK (Olah
+                        Hati, Rasa , Pikiran)</td>
                 </tr>
                 <tr style="border: 1px solid black;">
                     <td>2</td>
                     <td>07.45 - 08.30</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
                 </tr>
                 <tr style="border: 1px solid black;">
                     <td>3</td>
                     <td>08.30 - 09.15</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
                 </tr>
                 <tr style="border: 1px solid black;">
                     <td></td>
                     <td>09.15 - 09.30</td>
-                    <td colspan="12" style="background-color: rgb(98, 98, 255); color: white; font-style: italic;">Istirahat</td>
-                    <td colspan="12" style="background-color: rgb(98, 98, 255); color: white; font-style: italic;">Istirahat</td>
-                    <td colspan="12" style="background-color: rgb(98, 98, 255); color: white; font-style: italic;">Istirahat</td>
+                    <td colspan="12" style="background-color: rgb(98, 98, 255); color: white; font-style: italic;">
+                        Istirahat</td>
+                    <td colspan="12" style="background-color: rgb(98, 98, 255); color: white; font-style: italic;">
+                        Istirahat</td>
+                    <td colspan="12" style="background-color: rgb(98, 98, 255); color: white; font-style: italic;">
+                        Istirahat</td>
                 </tr>
                 <tr style="border: 1px solid black;">
                     <td>4</td>
                     <td>09.30 - 10.15</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
                 </tr>
                 <tr style="border: 1px solid black;">
                     <td>5</td>
                     <td>10.15 - 11.00</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
                 </tr>
                 <tr style="border: 1px solid black;">
                     <td>6</td>
                     <td>11.00 - 11.45</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
                 </tr>
                 <tr style="border: 1px solid black;">
                     <td></td>
                     <td>11.45 - 12.15</td>
-                    <td colspan="12" style="background-color: skyblue; color: white; font-style: italic;">SHALAT DZUHUR BERJAMAAH</td>
-                    <td colspan="12" style="background-color: skyblue; color: white; font-style: italic;">SHALAT DZUHUR BERJAMAAH</td>
-                    <td colspan="12" style="background-color: skyblue; color: white; font-style: italic;">SHALAT DZUHUR BERJAMAAH</td>
+                    <td colspan="12" style="background-color: skyblue; color: white; font-style: italic;">SHALAT
+                        DZUHUR BERJAMAAH</td>
+                    <td colspan="12" style="background-color: skyblue; color: white; font-style: italic;">SHALAT
+                        DZUHUR BERJAMAAH</td>
+                    <td colspan="12" style="background-color: skyblue; color: white; font-style: italic;">SHALAT
+                        DZUHUR BERJAMAAH</td>
                 </tr>
                 <tr style="border: 1px solid black;">
                     <td>7</td>
                     <td>12.15 - 13.00</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
                 </tr>
                 <tr style="border: 1px solid black;">
                     <td>8</td>
                     <td>13.00 - 13.45</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
                 </tr>
                 <tr style="border: 1px solid black;">
                     <td>9</td>
                     <td>13.45 - 14.30</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
                 </tr>
                 <tr style="border: 1px solid black;">
                     <td>10</td>
                     <td>14.30 - 15.15</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
                 </tr>
                 <tr style="border: 1px solid black;">
                     <td></td>
                     <td>15.15 - 15.45</td>
-                    <td colspan="12" style="background-color: rgb(98, 98, 255); color: white; font-style: italic;">IBADAH SHOLAT ASHAR</td>
-                    <td colspan="12" style="background-color: rgb(98, 98, 255); color: white; font-style: italic;">IBADAH SHOLAT ASHAR</td>
-                    <td colspan="12" style="background-color: rgb(98, 98, 255); color: white; font-style: italic;">IBADAH SHOLAT ASHAR</td>
+                    <td colspan="12" style="background-color: rgb(98, 98, 255); color: white; font-style: italic;">
+                        IBADAH SHOLAT ASHAR</td>
+                    <td colspan="12" style="background-color: rgb(98, 98, 255); color: white; font-style: italic;">
+                        IBADAH SHOLAT ASHAR</td>
+                    <td colspan="12" style="background-color: rgb(98, 98, 255); color: white; font-style: italic;">
+                        IBADAH SHOLAT ASHAR</td>
                 </tr>
                 <tr style="border: 1px solid black;">
                     <td></td>
                     <td>15.45 - 16.30</td>
-                    <td colspan="12" style="background-color: rgb(98, 213, 255); color: white; font-style: italic;">EKSTRAKURIKULER PILIHAN SISWA</td>
-                    <td colspan="12" style="background-color: rgb(98, 213, 255); color: white; font-style: italic;">EKSTRAKURIKULER PILIHAN SISWA</td>
-                    <td colspan="12" style="background-color: rgb(98, 213, 255); color: white; font-style: italic;">EKSTRAKURIKULER PILIHAN SISWA</td>
+                    <td colspan="12" style="background-color: rgb(98, 213, 255); color: white; font-style: italic;">
+                        EKSTRAKURIKULER PILIHAN SISWA</td>
+                    <td colspan="12" style="background-color: rgb(98, 213, 255); color: white; font-style: italic;">
+                        EKSTRAKURIKULER PILIHAN SISWA</td>
+                    <td colspan="12" style="background-color: rgb(98, 213, 255); color: white; font-style: italic;">
+                        EKSTRAKURIKULER PILIHAN SISWA</td>
                 </tr>
 
                 {{-- Hari Kamis --}}
@@ -314,73 +1349,412 @@
                     <td rowspan="14" style="writing-mode: vertical-rl; text-orientation: upright;">Kamis</td>
                     <td>1</td>
                     <td>06.45 - 07.45</td>
-                    <td colspan="12" style="background-color: skyblue; color: white; font-style: italic;">PPK (Olah Hati, Rasa , Pikiran)</td>
-                    <td colspan="12" style="background-color: skyblue; color: white; font-style: italic;">PPK (Olah Hati, Rasa , Pikiran)</td>
-                    <td colspan="12" style="background-color: skyblue; color: white; font-style: italic;">PK (Olah Hati, Rasa , Pikiran)</td>
+                    <td colspan="12" style="background-color: skyblue; color: white; font-style: italic;">PPK (Olah
+                        Hati, Rasa , Pikiran)</td>
+                    <td colspan="12" style="background-color: skyblue; color: white; font-style: italic;">PPK (Olah
+                        Hati, Rasa , Pikiran)</td>
+                    <td colspan="12" style="background-color: skyblue; color: white; font-style: italic;">PK (Olah
+                        Hati, Rasa , Pikiran)</td>
                 </tr>
                 <tr style="border: 1px solid black;">
                     <td>2</td>
                     <td>07.45 - 08.30</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
                 </tr>
                 <tr style="border: 1px solid black;">
                     <td>3</td>
                     <td>08.30 - 09.15</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
                 </tr>
                 <tr style="border: 1px solid black;">
                     <td></td>
                     <td>09.15 - 09.30</td>
-                    <td colspan="12" style="background-color: rgb(98, 98, 255); color: white; font-style: italic;">Istirahat</td>
-                    <td colspan="12" style="background-color: rgb(98, 98, 255); color: white; font-style: italic;">Istirahat</td>
-                    <td colspan="12" style="background-color: rgb(98, 98, 255); color: white; font-style: italic;">Istirahat</td>
+                    <td colspan="12" style="background-color: rgb(98, 98, 255); color: white; font-style: italic;">
+                        Istirahat</td>
+                    <td colspan="12" style="background-color: rgb(98, 98, 255); color: white; font-style: italic;">
+                        Istirahat</td>
+                    <td colspan="12" style="background-color: rgb(98, 98, 255); color: white; font-style: italic;">
+                        Istirahat</td>
                 </tr>
                 <tr style="border: 1px solid black;">
                     <td>4</td>
                     <td>09.30 - 10.15</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
                 </tr>
                 <tr style="border: 1px solid black;">
                     <td>5</td>
                     <td>10.15 - 11.00</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
                 </tr>
                 <tr style="border: 1px solid black;">
                     <td>6</td>
                     <td>11.00 - 11.45</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
                 </tr>
                 <tr style="border: 1px solid black;">
                     <td></td>
                     <td>11.45 - 12.15</td>
-                    <td colspan="12" style="background-color: skyblue; color: white; font-style: italic;">SHALAT DZUHUR BERJAMAAH</td>
-                    <td colspan="12" style="background-color: skyblue; color: white; font-style: italic;">SHALAT DZUHUR BERJAMAAH</td>
-                    <td colspan="12" style="background-color: skyblue; color: white; font-style: italic;">SHALAT DZUHUR BERJAMAAH</td>
+                    <td colspan="12" style="background-color: skyblue; color: white; font-style: italic;">SHALAT
+                        DZUHUR BERJAMAAH</td>
+                    <td colspan="12" style="background-color: skyblue; color: white; font-style: italic;">SHALAT
+                        DZUHUR BERJAMAAH</td>
+                    <td colspan="12" style="background-color: skyblue; color: white; font-style: italic;">SHALAT
+                        DZUHUR BERJAMAAH</td>
                 </tr>
                 <tr style="border: 1px solid black;">
                     <td>7</td>
                     <td>12.15 - 13.00</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
                 </tr>
                 <tr style="border: 1px solid black;">
                     <td>8</td>
                     <td>13.00 - 13.45</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
                 </tr>
                 <tr style="border: 1px solid black;">
                     <td>9</td>
                     <td>13.45 - 14.30</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
                 </tr>
                 <tr style="border: 1px solid black;">
                     <td>10</td>
                     <td>14.30 - 15.15</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
                 </tr>
                 <tr style="border: 1px solid black;">
                     <td></td>
                     <td>15.15 - 15.45</td>
-                    <td colspan="12" style="background-color: rgb(98, 98, 255); color: white; font-style: italic;">IBADAH SHOLAT ASHAR</td>
-                    <td colspan="12" style="background-color: rgb(98, 98, 255); color: white; font-style: italic;">IBADAH SHOLAT ASHAR</td>
-                    <td colspan="12" style="background-color: rgb(98, 98, 255); color: white; font-style: italic;">IBADAH SHOLAT ASHAR</td>
+                    <td colspan="12" style="background-color: rgb(98, 98, 255); color: white; font-style: italic;">
+                        IBADAH SHOLAT ASHAR</td>
+                    <td colspan="12" style="background-color: rgb(98, 98, 255); color: white; font-style: italic;">
+                        IBADAH SHOLAT ASHAR</td>
+                    <td colspan="12" style="background-color: rgb(98, 98, 255); color: white; font-style: italic;">
+                        IBADAH SHOLAT ASHAR</td>
                 </tr>
                 <tr style="border: 1px solid black;">
                     <td></td>
                     <td>15.45 - 16.30</td>
-                    <td colspan="12" style="background-color: rgb(98, 213, 255); color: white; font-style: italic;">EKSTRAKURIKULER PILIHAN SISWA</td>
-                    <td colspan="12" style="background-color: rgb(98, 213, 255); color: white; font-style: italic;">EKSTRAKURIKULER PILIHAN SISWA</td>
-                    <td colspan="12" style="background-color: rgb(98, 213, 255); color: white; font-style: italic;">EKSTRAKURIKULER PILIHAN SISWA</td>
+                    <td colspan="12" style="background-color: rgb(98, 213, 255); color: white; font-style: italic;">
+                        EKSTRAKURIKULER PILIHAN SISWA</td>
+                    <td colspan="12" style="background-color: rgb(98, 213, 255); color: white; font-style: italic;">
+                        EKSTRAKURIKULER PILIHAN SISWA</td>
+                    <td colspan="12" style="background-color: rgb(98, 213, 255); color: white; font-style: italic;">
+                        EKSTRAKURIKULER PILIHAN SISWA</td>
                 </tr>
 
                 {{-- Hari Jumat --}}
@@ -389,73 +1763,412 @@
                     <td rowspan="14" style="writing-mode: vertical-rl; text-orientation: upright;">Jumat</td>
                     <td>5</td>
                     <td>06.45 - 07.45</td>
-                    <td colspan="12" style="background-color: skyblue; color: white; font-style: italic;">PPK (Olah Hati, Rasa , Pikiran)</td>
-                    <td colspan="12" style="background-color: skyblue; color: white; font-style: italic;">PPK (Olah Hati, Rasa , Pikiran)</td>
-                    <td colspan="12" style="background-color: skyblue; color: white; font-style: italic;">PK (Olah Hati, Rasa , Pikiran)</td>
+                    <td colspan="12" style="background-color: skyblue; color: white; font-style: italic;">PPK (Olah
+                        Hati, Rasa , Pikiran)</td>
+                    <td colspan="12" style="background-color: skyblue; color: white; font-style: italic;">PPK (Olah
+                        Hati, Rasa , Pikiran)</td>
+                    <td colspan="12" style="background-color: skyblue; color: white; font-style: italic;">PK (Olah
+                        Hati, Rasa , Pikiran)</td>
                 </tr>
                 <tr style="border: 1px solid black;">
                     <td>2</td>
                     <td>07.45 - 08.30</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
                 </tr>
                 <tr style="border: 1px solid black;">
                     <td>3</td>
                     <td>08.30 - 09.15</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
                 </tr>
                 <tr style="border: 1px solid black;">
                     <td></td>
                     <td>09.15 - 09.30</td>
-                    <td colspan="12" style="background-color: rgb(98, 98, 255); color: white; font-style: italic;">Istirahat</td>
-                    <td colspan="12" style="background-color: rgb(98, 98, 255); color: white; font-style: italic;">Istirahat</td>
-                    <td colspan="12" style="background-color: rgb(98, 98, 255); color: white; font-style: italic;">Istirahat</td>
+                    <td colspan="12" style="background-color: rgb(98, 98, 255); color: white; font-style: italic;">
+                        Istirahat</td>
+                    <td colspan="12" style="background-color: rgb(98, 98, 255); color: white; font-style: italic;">
+                        Istirahat</td>
+                    <td colspan="12" style="background-color: rgb(98, 98, 255); color: white; font-style: italic;">
+                        Istirahat</td>
                 </tr>
                 <tr style="border: 1px solid black;">
                     <td>4</td>
                     <td>09.30 - 10.15</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
                 </tr>
                 <tr style="border: 1px solid black;">
                     <td>5</td>
                     <td>10.15 - 11.00</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
                 </tr>
                 <tr style="border: 1px solid black;">
                     <td>6</td>
                     <td>11.00 - 11.45</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
                 </tr>
                 <tr style="border: 1px solid black;">
                     <td></td>
                     <td>11.45 - 12.15</td>
-                    <td colspan="12" style="background-color: skyblue; color: white; font-style: italic;">Istirahat Sholat Jumat</td>
-                    <td colspan="12" style="background-color: skyblue; color: white; font-style: italic;">Istirahat Sholat Jumat</td>
-                    <td colspan="12" style="background-color: skyblue; color: white; font-style: italic;">Istirahat Sholat Jumat</td>
+                    <td colspan="12" style="background-color: skyblue; color: white; font-style: italic;">Istirahat
+                        Sholat Jumat</td>
+                    <td colspan="12" style="background-color: skyblue; color: white; font-style: italic;">Istirahat
+                        Sholat Jumat</td>
+                    <td colspan="12" style="background-color: skyblue; color: white; font-style: italic;">Istirahat
+                        Sholat Jumat</td>
                 </tr>
                 <tr style="border: 1px solid black;">
                     <td>7</td>
                     <td>12.15 - 13.00</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
                 </tr>
                 <tr style="border: 1px solid black;">
                     <td>8</td>
                     <td>13.00 - 13.45</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
                 </tr>
                 <tr style="border: 1px solid black;">
                     <td>9</td>
                     <td>13.45 - 14.30</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
                 </tr>
                 <tr style="border: 1px solid black;">
                     <td>10</td>
                     <td>14.30 - 15.15</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
                 </tr>
                 <tr style="border: 1px solid black;">
                     <td></td>
                     <td>15.15 - 15.45</td>
-                    <td colspan="12" style="background-color: rgb(98, 98, 255); color: white; font-style: italic;">IBADAH SHOLAT ASHAR</td>
-                    <td colspan="12" style="background-color: rgb(98, 98, 255); color: white; font-style: italic;">IBADAH SHOLAT ASHAR</td>
-                    <td colspan="12" style="background-color: rgb(98, 98, 255); color: white; font-style: italic;">IBADAH SHOLAT ASHAR</td>
+                    <td colspan="12" style="background-color: rgb(98, 98, 255); color: white; font-style: italic;">
+                        IBADAH SHOLAT ASHAR</td>
+                    <td colspan="12" style="background-color: rgb(98, 98, 255); color: white; font-style: italic;">
+                        IBADAH SHOLAT ASHAR</td>
+                    <td colspan="12" style="background-color: rgb(98, 98, 255); color: white; font-style: italic;">
+                        IBADAH SHOLAT ASHAR</td>
                 </tr>
                 <tr style="border: 1px solid black;">
                     <td></td>
                     <td>15.45 - 16.30</td>
-                    <td colspan="12" style="background-color: rgb(98, 213, 255); color: white; font-style: italic;">EKSTRAKURIKULER PILIHAN SISWA</td>
-                    <td colspan="12" style="background-color: rgb(98, 213, 255); color: white; font-style: italic;">EKSTRAKURIKULER PILIHAN SISWA</td>
-                    <td colspan="12" style="background-color: rgb(98, 213, 255); color: white; font-style: italic;">EKSTRAKURIKULER PILIHAN SISWA</td>
+                    <td colspan="12" style="background-color: rgb(98, 213, 255); color: white; font-style: italic;">
+                        EKSTRAKURIKULER PILIHAN SISWA</td>
+                    <td colspan="12" style="background-color: rgb(98, 213, 255); color: white; font-style: italic;">
+                        EKSTRAKURIKULER PILIHAN SISWA</td>
+                    <td colspan="12" style="background-color: rgb(98, 213, 255); color: white; font-style: italic;">
+                        EKSTRAKURIKULER PILIHAN SISWA</td>
                 </tr>
 
             </tbody>

@@ -14,6 +14,6 @@ class JadwalController extends Controller
     {
         $jadwal = Jadwal::with('pengampu','hari','jam')->get();
         $pdf = Pdf::loadview('jadwal.export', compact('jadwal'));
-        return $pdf->download('Jadwal Mapel.pdf');
+        return $pdf->stream('Jadwal Mapel.pdf');
     }
 }
