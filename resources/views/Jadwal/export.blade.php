@@ -120,10 +120,10 @@
                 <tr style="border: 1px solid black;">
                     <td>2</td>
                     <td>07.45 - 08.30</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
+                    <td>{{dataJadwal(1,1,2)}}</td>
+                    <td>{{dataJadwal(2,1,2)}}</td>
+                    <td>{{dataJadwal(3,1,2)}}</td>
+                    <td>{{dataJadwal(4,1,2)}}</td>
                     <td></td>
                     <td></td>
                     <td></td>
@@ -519,7 +519,7 @@
                 </tr>
                 {{-- Hari Selasa --}}
                 <tr style="border: 1px solid black;">
-                    <td rowspan="14">1</td>
+                    <td rowspan="14">2</td>
                     <td rowspan="14" style="writing-mode: vertical-rl; text-orientation: upright;">Selasa</td>
                     <td>1</td>
                     <td>06.45 - 07.45</td>
@@ -934,7 +934,7 @@
 
                 {{-- Hari Rabu --}}
                 <tr style="border: 1px solid black;">
-                    <td rowspan="14">1</td>
+                    <td rowspan="14">3</td>
                     <td rowspan="14" style="writing-mode: vertical-rl; text-orientation: upright;">Rabu</td>
                     <td>1</td>
                     <td>06.45 - 07.45</td>
