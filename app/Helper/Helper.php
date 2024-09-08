@@ -4,7 +4,7 @@ if (! function_exists('dataJadwal')) {
         $jadwal = \App\Models\Jadwal::with('pengampu','hari','jam')
         ->whereRelation('pengampu.kelas','kelas_id',$kelas)
         ->where('hari_id',$hari)
-        ->where('jam_id',$jam)
+        ->whereJsonContains('jam_data',$jam)
         ->first();
 
         if($jadwal){
