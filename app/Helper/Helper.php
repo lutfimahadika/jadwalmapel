@@ -6,6 +6,11 @@ if (! function_exists('dataJadwal')) {
         ->where('hari_id',$hari)
         ->where('jam_id',$jam)
         ->first();
-        return $jadwal?->pengampu->guru->no_duk."-".$jadwal?->pengampu->mapel->id;
+
+        if($jadwal){
+            return $jadwal->pengampu->guru->no_duk."-".$jadwal->pengampu->mapel->kode;
+        }else{
+            return null;
+        }
     }
 }

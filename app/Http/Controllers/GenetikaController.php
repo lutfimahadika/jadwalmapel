@@ -23,6 +23,7 @@ class GenetikaController extends Controller
 
     public function generate()
     {
+        $jam_id = [];
         $genetik = new Genetika(
             100, // jumlah populasi
             0.70, // probabilitas crossover
@@ -64,9 +65,18 @@ class GenetikaController extends Controller
                             $jamSelesai = Jam::where('id', $jadwal[$k][1] + ($guruMengajar->mapel->jp - 1))->first()->jam_akhir;
                         }
 
+                        if ($guruMengajar->mapel->jp == 5 || $guruMengajar->mapel->jp == 3) {
+                            $jam_id = array($jadwal[$k][1], $jadwal[$k][1] + 1, $jadwal[$k][1] + 2);
+                        } else if ($guruMengajar->mapel->jp == 4 || $guruMengajar->mapel->jp == 2) {
+                            $jam_id = array($jadwal[$k][1], $jadwal[$k][1] + 1);
+                        } else {
+                            $jam_id = array($jadwal[$k][1]);
+                        }
+
                         $insertJadwal = new Jadwal();
                         $insertJadwal->pengampu_id = $jadwal[$k][0];
                         $insertJadwal->jam_id = $jadwal[$k][1];
+                        $insertJadwal->jam_data = $jam_id;
                         $insertJadwal->hari_id = $jadwal[$k][2];
                         $insertJadwal->waktu_mulai =  $jamMulai;
                         $insertJadwal->waktu_selesai =  $jamSelesai;

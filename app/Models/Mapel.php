@@ -11,6 +11,7 @@ class Mapel extends Model
 
     protected $fillable = [
         'mata_pelajaran',
+        'kode',
         'jp',
         'tingkat',
         'jurusan'

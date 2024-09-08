@@ -13,9 +13,20 @@ class Jadwal extends Model
         'pengampu_id',
         'hari_id',
         'jam_id',
+        'jam_data',
         'waktu_mulai',
         'waktu_selesai',
     ];
+
+    /**
+     * The attributes that should be cast to native types.
+     *
+     * @var array
+     */
+    protected $casts = [
+        'jam_data' => 'json',
+    ];
+
 
     public function pengampu()
     {
